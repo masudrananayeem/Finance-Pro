@@ -1,0 +1,175 @@
+
+body{
+    background:#f4f7fc;
+}
+
+.custom-navbar{
+    background:linear-gradient(
+    135deg,
+    #0f172a,
+    #1e3a8a);
+}
+
+.profile-img-nav{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.welcome-box{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.finance-card{
+    padding:25px;
+    border-radius:20px;
+    color:white;
+    margin-bottom:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.finance-card i{
+    font-size:35px;
+}
+
+.balance-card{
+    background:linear-gradient(
+    135deg,
+    #4361ee,
+    #4895ef);
+}
+
+.income-card{
+    background:linear-gradient(
+    135deg,
+    #00b894,
+    #55efc4);
+}
+
+.expense-card{
+    background:linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b6b);
+}
+
+.savings-card{
+    background:linear-gradient(
+    135deg,
+    #ff9f1c,
+    #ffbf69);
+}
+
+.dashboard-box{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.progress{
+
+    height:25px;
+
+    border-radius:20px;
+}
+
+.progress-bar{
+
+    font-weight:bold;
+}
+
+.table{
+
+    margin-top:15px;
+}
+
+.btn{
+
+    border-radius:12px;
+}
+
+.dashboard-box h4{
+
+    margin-bottom:20px;
+}
+#financeChart{
+    max-height: 300px;
+}
+
+.finance-form{
+
+    padding:30px;
+
+    border-radius:25px;
+
+    color:white;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.1);
+
+    transition:.3s;
+}
+
+.finance-form:hover{
+
+    transform:translateY(-5px);
+}
+
+.income-form{
+
+    background:linear-gradient(
+    135deg,
+    #2563eb,
+    #60a5fa);
+}
+
+.expense-form{
+
+    background:linear-gradient(
+    135deg,
+    #1d4ed8,
+    #93c5fd);
+}
+
+.form-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:15px;
+}
+
+.form-header i{
+
+    font-size:32px;
+}
+
+.custom-input{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:12px;
+}
+
+.custom-input:focus{
+
+    box-shadow:none;
+}
