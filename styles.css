@@ -1,0 +1,376 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Segoe UI',sans-serif;
+
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a,
+        #3b82f6
+    );
+
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+/* Floating Background */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    animation:float 8s ease-in-out infinite;
+}
+
+.circle1{
+    width:250px;
+    height:250px;
+    top:5%;
+    left:5%;
+}
+
+.circle2{
+    width:180px;
+    height:180px;
+    bottom:10%;
+    right:8%;
+    animation-delay:2s;
+}
+
+.circle3{
+    width:120px;
+    height:120px;
+    top:50%;
+    right:30%;
+    animation-delay:4s;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-25px);
+    }
+
+}
+
+.login-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:30px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+/* Left Side */
+
+.left-panel{
+
+    flex:1;
+
+    color:white;
+
+    padding:40px;
+}
+
+.left-panel h1{
+
+    font-size:3rem;
+
+    font-weight:700;
+}
+
+.left-panel p{
+
+    font-size:1.1rem;
+
+    opacity:.9;
+}
+
+.feature-box{
+
+    margin-top:30px;
+}
+
+.feature-box div{
+
+    margin-bottom:15px;
+
+    font-size:18px;
+}
+
+.illustration{
+
+    font-size:180px;
+
+    text-align:center;
+
+    opacity:.9;
+
+    animation:float 5s ease-in-out infinite;
+}
+
+/* Right Side */
+
+.right-panel{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.login-card{
+
+    width:100%;
+
+    max-width:450px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    color:white;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.logo{
+
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.logo-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:40px;
+
+    background:white;
+
+    color:#1e3a8a;
+}
+
+.brand{
+
+    margin-top:15px;
+
+    font-size:30px;
+
+    font-weight:700;
+}
+
+.subtitle{
+
+    opacity:.8;
+
+    font-size:14px;
+}
+
+.form-control{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:12px;
+}
+
+.login-btn{
+
+    background:white;
+
+    color:#1e3a8a;
+
+    border:none;
+
+    border-radius:12px;
+
+    height:48px;
+
+    font-weight:700;
+}
+
+.google-btn{
+
+    border-radius:12px;
+
+    height:48px;
+}
+
+.stats{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    text-align:center;
+
+    margin-top:25px;
+}
+
+.stats h5{
+
+    margin-bottom:0;
+
+    font-weight:700;
+}
+
+.demo-box{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:rgba(255,255,255,.1);
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:14px;
+}
+
+/* Tablet */
+
+@media(max-width:991px){
+
+    .left-panel{
+
+        display:none;
+    }
+
+    .right-panel{
+
+        width:100%;
+    }
+
+    .login-card{
+
+        width:95%;
+
+        max-width:500px;
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .login-page{
+
+        min-height:auto;
+
+        padding:20px 15px;
+    }
+
+    .login-card{
+
+        width:100%;
+
+        max-width:100%;
+
+        padding:25px;
+    }
+
+    .logo-icon{
+
+        width:70px;
+        height:70px;
+
+        font-size:30px;
+    }
+
+    .brand{
+
+        font-size:2rem;
+    }
+
+    .stats{
+
+        gap:10px;
+    }
+
+}
+
+/* Small Mobile */
+
+@media(max-width:480px){
+
+    .login-card{
+
+        padding:20px;
+    }
+
+    .brand{
+
+        font-size:1.7rem;
+    }
+
+    .stats{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:15px;
+    }
+
+    .stats div{
+
+        flex:1 1 30%;
+
+        min-width:80px;
+    }
+
+    .d-flex.justify-content-between{
+
+        flex-direction:column;
+
+        gap:10px;
+
+        align-items:flex-start;
+    }
+
+}
