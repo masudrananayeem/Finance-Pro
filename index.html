@@ -7,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance-Pro | Login</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -23,232 +21,356 @@
 
         body{
             min-height:100vh;
-
+            font-family:'Segoe UI',sans-serif;
             background:linear-gradient(
                 135deg,
                 #0f172a,
                 #1e3a8a,
                 #3b82f6
             );
-
-            display:flex;
-            justify-content:center;
-            align-items:center;
-
-            font-family:'Segoe UI',sans-serif;
+            overflow:hidden;
         }
 
-        .login-card{
-
-            width:100%;
-            max-width:450px;
-
-            background:rgba(255,255,255,.95);
-
-            backdrop-filter:blur(10px);
-
-            border-radius:25px;
-
-            padding:40px;
-
-            box-shadow:0 20px 40px rgba(0,0,0,.2);
-        }
-
-        .logo-section{
-            text-align:center;
-            margin-bottom:30px;
-        }
-
-        .bank-logo{
-
-            width:90px;
-            height:90px;
-
-            margin:auto;
-
+        .circle{
+            position:absolute;
             border-radius:50%;
+            background:rgba(255,255,255,.08);
+            animation:float 8s ease-in-out infinite;
+        }
 
-            background:linear-gradient(
-                135deg,
-                #1e3a8a,
-                #3b82f6
-            );
+        .circle1{
+            width:250px;
+            height:250px;
+            top:5%;
+            left:5%;
+        }
 
+        .circle2{
+            width:180px;
+            height:180px;
+            bottom:10%;
+            right:8%;
+            animation-delay:2s;
+        }
+
+        .circle3{
+            width:120px;
+            height:120px;
+            top:50%;
+            right:30%;
+            animation-delay:4s;
+        }
+
+        @keyframes float{
+            0%,100%{
+                transform:translateY(0);
+            }
+            50%{
+                transform:translateY(-25px);
+            }
+        }
+
+        .login-page{
+            min-height:100vh;
             display:flex;
-            justify-content:center;
             align-items:center;
+            justify-content:center;
+            padding:30px;
+            position:relative;
+            z-index:2;
+        }
 
+        .left-panel{
+            flex:1;
             color:white;
-            font-size:42px;
-
-            box-shadow:0 10px 25px rgba(0,0,0,.15);
+            padding:40px;
         }
 
-        .brand-name{
-
-            margin-top:15px;
-
-            font-size:30px;
+        .left-panel h1{
+            font-size:3rem;
             font-weight:700;
-
-            color:#1e3a8a;
         }
 
-        .brand-subtitle{
-
-            color:#6c757d;
-            font-size:14px;
-        }
-
-        .form-label{
-            font-weight:600;
-        }
-
-        .form-control{
-
-            padding:12px;
-
-            border-radius:12px;
-        }
-
-        .login-btn{
-
-            background:linear-gradient(
-                135deg,
-                #1e3a8a,
-                #3b82f6
-            );
-
-            border:none;
-
-            border-radius:12px;
-
-            padding:12px;
-
-            font-weight:600;
-        }
-
-        .login-btn:hover{
-
+        .left-panel p{
+            font-size:1.1rem;
             opacity:.9;
         }
 
-        .demo-box{
-
-            margin-top:20px;
-
-            background:#f8f9fa;
-
-            padding:15px;
-
-            border-radius:12px;
-
-            font-size:14px;
-
-            text-align:center;
+        .feature-box{
+            margin-top:30px;
         }
 
-        .footer{
+        .feature-box div{
+            margin-bottom:15px;
+            font-size:18px;
+        }
 
-            margin-top:20px;
-
+        .illustration{
+            font-size:180px;
             text-align:center;
+            opacity:.9;
+            animation:float 5s ease-in-out infinite;
+        }
 
-            color:#6c757d;
+        .right-panel{
+            flex:1;
+            display:flex;
+            justify-content:center;
+        }
 
-            font-size:13px;
+        .login-card{
+            width:100%;
+            max-width:450px;
+            background:rgba(255,255,255,.15);
+            backdrop-filter:blur(15px);
+            border:1px solid rgba(255,255,255,.2);
+            border-radius:25px;
+            padding:40px;
+            color:white;
+            box-shadow:0 20px 40px rgba(0,0,0,.25);
+        }
+
+        .logo{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        .logo-icon{
+            width:90px;
+            height:90px;
+            margin:auto;
+            border-radius:50%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:40px;
+            background:white;
+            color:#1e3a8a;
+        }
+
+        .brand{
+            margin-top:15px;
+            font-size:30px;
+            font-weight:700;
+        }
+
+        .subtitle{
+            opacity:.8;
+            font-size:14px;
+        }
+
+        .form-control{
+            border:none;
+            border-radius:12px;
+            padding:12px;
+        }
+
+        .login-btn{
+            background:white;
+            color:#1e3a8a;
+            border:none;
+            border-radius:12px;
+            padding:12px;
+            font-weight:700;
+        }
+
+        .login-btn:hover{
+            transform:translateY(-2px);
+        }
+
+        .google-btn{
+            border-radius:12px;
+        }
+
+        .stats{
+            display:flex;
+            justify-content:space-between;
+            text-align:center;
+            margin-top:25px;
+        }
+
+        .stats h5{
+            margin-bottom:0;
+            font-weight:700;
+        }
+
+        .demo-box{
+            margin-top:20px;
+            padding:15px;
+            background:rgba(255,255,255,.1);
+            border-radius:12px;
+            text-align:center;
+            font-size:14px;
+        }
+
+        @media(max-width:991px){
+
+            .left-panel{
+                display:none;
+            }
+
+            .right-panel{
+                flex:unset;
+                width:100%;
+            }
         }
     </style>
-
 </head>
 
 <body>
 
-    <div class="login-card">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
 
-        <!-- Logo -->
+    <div class="login-page">
 
-        <div class="logo-section">
+        <div class="left-panel">
 
-            <div class="bank-logo">
+            <h1>Finance-Pro</h1>
 
-                <i class="bi bi-bank2"></i>
+            <p>
+                Smart Personal Finance Management System
+            </p>
+
+            <div class="illustration">
+                🏦
+            </div>
+
+            <div class="feature-box">
+
+                <div>
+                    <i class="bi bi-shield-check"></i>
+                    Secure Banking Experience
+                </div>
+
+                <div>
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Track Income & Expenses
+                </div>
+
+                <div>
+                    <i class="bi bi-pie-chart-fill"></i>
+                    Advanced Analytics Dashboard
+                </div>
 
             </div>
 
-            <h1 class="brand-name">
-                Finance-Pro
-            </h1>
-
-            <p class="brand-subtitle">
-                Smart Personal Finance Management
-            </p>
-
         </div>
 
-        <!-- Login Form -->
+        <div class="right-panel">
 
-        <div class="mb-3">
+            <div class="login-card">
 
-            <label class="form-label">
-                Email Address
-            </label>
+                <div class="logo">
 
-            <input
-            id="email"
-            type="email"
-            class="form-control"
-            placeholder="Enter your email">
+                    <div class="logo-icon">
+                        <i class="bi bi-bank2"></i>
+                    </div>
 
-        </div>
+                    <div class="brand">
+                        Finance-Pro
+                    </div>
 
-        <div class="mb-3">
+                    <div class="subtitle">
+                        Welcome Back
+                    </div>
 
-            <label class="form-label">
-                Password
-            </label>
+                </div>
 
-            <input
-            id="password"
-            type="password"
-            class="form-control"
-            placeholder="Enter your password">
+                <div class="mb-3">
 
-        </div>
+                    <label>Email Address</label>
 
-        <button
-        id="loginBtn"
-        class="btn btn-primary w-100 login-btn">
+                    <input
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter email">
 
-            <i class="bi bi-box-arrow-in-right"></i>
+                </div>
 
-            Login
+                <div class="mb-3">
 
-        </button>
+                    <label>Password</label>
 
-        <!-- Demo Login -->
+                    <input
+                    id="password"
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter password">
 
-        <div class="demo-box">
+                </div>
 
-            <strong>Demo Account</strong>
+                <div class="d-flex justify-content-between mb-3">
 
-            <br>
+                    <div>
 
-            Email:
-            admin@gmail.com
+                        <input type="checkbox">
 
-            <br>
+                        Remember Me
 
-            Password:
-            123456
+                    </div>
 
-        </div>
+                    <a href="#" class="text-white">
+                        Forgot Password?
+                    </a>
 
-        <!-- Footer -->
+                </div>
 
-        <div class="footer">
+                <button
+                id="loginBtn"
+                class="btn login-btn w-100">
 
-            © 2026 Finance-Pro
+                    <i class="bi bi-box-arrow-in-right"></i>
+
+                    Login
+
+                </button>
+
+                <button
+                class="btn btn-light w-100 mt-3 google-btn">
+
+                    <i class="bi bi-google"></i>
+
+                    Continue with Google
+
+                </button>
+
+                <div class="demo-box">
+
+                    <strong>Demo Account</strong>
+
+                    <br>
+
+                    Email: admin@gmail.com
+
+                    <br>
+
+                    Password: 123456
+
+                </div>
+
+                <div class="stats">
+
+                    <div>
+                        <h5>10K+</h5>
+                        <small>Users</small>
+                    </div>
+
+                    <div>
+                        <h5>৳50M+</h5>
+                        <small>Transactions</small>
+                    </div>
+
+                    <div>
+                        <h5>99.9%</h5>
+                        <small>Secure</small>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 

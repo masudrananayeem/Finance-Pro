@@ -1,37 +1,58 @@
 const loginBtn =
-document.getElementById("loginBtn");
+    document.getElementById("loginBtn");
 
-if(loginBtn){
+if (loginBtn) {
 
-loginBtn.addEventListener("click",()=>{
+    loginBtn.addEventListener("click", () => {
 
-const email =
-document.getElementById("email").value;
+        const email =
+            document.getElementById("email").value;
 
-const password =
-document.getElementById("password").value;
+        const password =
+            document.getElementById("password").value;
 
-if(
-email === "admin@gmail.com"
-&&
-password === "123456"
-){
+        if (
+            email === "admin@gmail.com"
+            &&
+            password === "123456"
+        ) {
 
-localStorage.setItem(
-"isLoggedIn",
-"true"
-);
+            localStorage.setItem(
+                "isLoggedIn",
+                "true"
+            );
 
-window.location.href =
-"pages/dashboard.html";
+            window.location.href =
+                "pages/dashboard.html";
+
+        }
+        else {
+
+            alert("Wrong Credentials");
+
+        }
+
+    });
 
 }
-else{
 
-alert("Wrong Credentials");
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        () => {
+
+            localStorage.clear();
+
+            sessionStorage.clear();
+
+            window.location.href =
+                "../index.html";
+
+        });
 
 }
 
-});
-
-}

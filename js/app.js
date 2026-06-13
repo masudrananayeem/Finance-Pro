@@ -1,86 +1,86 @@
 
 let balance =
-Number(localStorage.getItem("balance")) || 1200;
+    Number(localStorage.getItem("balance")) || 1200;
 
 let income =
-Number(localStorage.getItem("income")) || 0;
+    Number(localStorage.getItem("income")) || 0;
 
 let expense =
-Number(localStorage.getItem("expense")) || 0;
+    Number(localStorage.getItem("expense")) || 0;
 
 let transactions =
-JSON.parse(localStorage.getItem("transactions"))
-|| [];
+    JSON.parse(localStorage.getItem("transactions"))
+    || [];
 
 updateUI();
 renderTransactions();
 
 document
-.getElementById("incomeBtn")
-.addEventListener("click",()=>{
+    .getElementById("incomeBtn")
+    .addEventListener("click", () => {
 
-    let amount =
-    Number(
-    document.getElementById("incomeInput").value
-    );
+        let amount =
+            Number(
+                document.getElementById("incomeInput").value
+            );
 
-    if(amount <= 0){
+        if (amount <= 0) {
 
-        alert("Enter valid amount");
-        return;
-    }
+            alert("Enter valid amount");
+            return;
+        }
 
-    income += amount;
-    balance += amount;
+        income += amount;
+        balance += amount;
 
-    addTransaction(
-        "Income",
-        amount
-    );
+        addTransaction(
+            "Income",
+            amount
+        );
 
-});
+    });
 
 document
-.getElementById("expenseBtn")
-.addEventListener("click",()=>{
+    .getElementById("expenseBtn")
+    .addEventListener("click", () => {
 
-    let amount =
-    Number(
-    document.getElementById("expenseInput").value
-    );
+        let amount =
+            Number(
+                document.getElementById("expenseInput").value
+            );
 
-    if(amount <= 0){
+        if (amount <= 0) {
 
-        alert("Enter valid amount");
-        return;
-    }
+            alert("Enter valid amount");
+            return;
+        }
 
-    if(amount > balance){
+        if (amount > balance) {
 
-        alert("Insufficient Balance");
-        return;
-    }
+            alert("Insufficient Balance");
+            return;
+        }
 
-    expense += amount;
-    balance -= amount;
+        expense += amount;
+        balance -= amount;
 
-    addTransaction(
-        "Expense",
-        amount
-    );
+        addTransaction(
+            "Expense",
+            amount
+        );
 
-});
+    });
 
-function addTransaction(type,amount){
+function addTransaction(type, amount) {
 
     transactions.unshift({
 
         date:
-        new Date().toLocaleString(),
+            new Date().toLocaleString(),
 
-        type:type,
+        type: type,
 
-        amount:amount
+        amount: amount
 
     });
 
@@ -88,7 +88,7 @@ function addTransaction(type,amount){
 
 }
 
-function saveAll(){
+function saveAll() {
 
     localStorage.setItem(
         "balance",
@@ -113,39 +113,44 @@ function saveAll(){
     updateUI();
     renderTransactions();
 
-}
+    if (typeof loadChart === "function") {
 
-function updateUI(){
-
-    document
-    .getElementById("balance")
-    .innerText = "৳" + balance;
-
-    document
-    .getElementById("income")
-    .innerText = "৳" + income;
-
-    document
-    .getElementById("expense")
-    .innerText = "৳" + expense;
-
-    document
-    .getElementById("savings")
-    .innerText =
-    "৳" + (income - expense);
+        loadChart();
+    }
 
 }
 
-function renderTransactions(){
+function updateUI() {
+
+    document
+        .getElementById("balance")
+        .innerText = "৳" + balance;
+
+    document
+        .getElementById("income")
+        .innerText = "৳" + income;
+
+    document
+        .getElementById("expense")
+        .innerText = "৳" + expense;
+
+    document
+        .getElementById("savings")
+        .innerText =
+        "৳" + (income - expense);
+
+}
+
+function renderTransactions() {
 
     let table =
-    document.getElementById(
-    "transactionTable"
-    );
+        document.getElementById(
+            "transactionTable"
+        );
 
     table.innerHTML = "";
 
-    transactions.forEach((item,index)=>{
+    transactions.forEach((item, index) => {
 
         table.innerHTML += `
 
@@ -172,9 +177,9 @@ function renderTransactions(){
 
 }
 
-function deleteTransaction(index){
+function deleteTransaction(index) {
 
-    transactions.splice(index,1);
+    transactions.splice(index, 1);
 
     localStorage.setItem(
         "transactions",
@@ -184,3 +189,4 @@ function deleteTransaction(index){
     renderTransactions();
 
 }
+

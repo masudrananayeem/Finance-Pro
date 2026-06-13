@@ -1,34 +1,34 @@
-const darkMode =
-document.getElementById("darkMode");
 
-if(darkMode){
+const darkModeToggle =
+    document.getElementById("darkMode");
 
-darkMode.checked =
-localStorage.getItem("darkMode")
-=== "true";
+if (localStorage.getItem("theme") === "dark") {
 
-darkMode.addEventListener("change",()=>{
+    document.body.classList.add("dark-mode");
 
-document.body.classList.toggle(
-"dark-theme"
-);
+    darkModeToggle.checked = true;
+}
 
-localStorage.setItem(
-"darkMode",
-darkMode.checked
-);
+darkModeToggle.addEventListener("change", () => {
+
+    if (darkModeToggle.checked) {
+
+        document.body.classList.add("dark-mode");
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
+    } else {
+
+        document.body.classList.remove("dark-mode");
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
+    }
 
 });
-
-}
-
-if(
-localStorage.getItem("darkMode")
-=== "true"
-){
-
-document.body.classList.add(
-"dark-theme"
-);
-
-}

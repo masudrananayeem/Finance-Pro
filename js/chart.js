@@ -1,24 +1,28 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+let financeChart;
+
+function loadChart() {
 
     const canvas =
-    document.getElementById("financeChart");
+        document.getElementById("financeChart");
 
-    if (!canvas) {
-        console.log("Canvas not found");
-        return;
-    }
+    if (!canvas) return;
 
     const income =
-    Number(localStorage.getItem("income")) || 0;
+        Number(localStorage.getItem("income")) || 0;
 
     const expense =
-    Number(localStorage.getItem("expense")) || 0;
+        Number(localStorage.getItem("expense")) || 0;
 
     const savings =
-    income - expense;
+        income - expense;
 
-    new Chart(canvas, {
+    if (financeChart) {
+
+        financeChart.destroy();
+    }
+
+    financeChart = new Chart(canvas, {
 
         type: "doughnut",
 
@@ -40,15 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 backgroundColor: [
 
-                    "#00b894",
-                    "#e63946",
-                    "#4361ee"
+                    "#10b981",
+                    "#ef4444",
+                    "#3b82f6"
 
                 ],
 
-                hoverOffset: 10,
-
-                borderWidth: 2
+                borderWidth: 0
 
             }]
 
@@ -63,15 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 legend: {
 
                     position: "bottom"
-
-                },
-
-                title: {
-
-                    display: true,
-
-                    text: "Finance Overview"
-
                 }
 
             }
@@ -80,4 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-});
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadChart
+);
