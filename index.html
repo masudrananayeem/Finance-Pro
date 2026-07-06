@@ -4,313 +4,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinancePro - Login</title>
+    <title>Finance-Pro | Login</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FAVICON - Full Package -->
+    <!-- ========================================== -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
 
-    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
 
-    <div class="page-wrapper">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
 
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="bi bi-stars"></i>
-                    <span>#1 Personal Finance Platform 2026</span>
-                </div>
-                <h1 class="hero-title">
-                    Take Control of Your <span class="text-gradient">Personal Finances</span><br>
-                    Start Today
-                </h1>
-                <p class="hero-subtitle">
-                    Track your income, expenses, savings, and goals all in one place.
-                    Join 50,000+ users who trust FinancePro for their personal finance management.
-                </p>
-                <div class="hero-actions">
-                    <a href="#main" class="hero-btn-primary" id="getStartedBtn">
-                        Get Started <i class="bi bi-arrow-right"></i>
-                    </a>
-                    <a href="#features" class="hero-btn-secondary">
-                        <i class="bi bi-play-circle"></i> Watch Demo
-                    </a>
-                </div>
-                <div class="hero-trust">
-                    <div class="trust-item"><i class="bi bi-shield-check"></i><span>256-bit Encryption</span></div>
-                    <div class="trust-item"><i class="bi bi-bank"></i><span>Bank Grade Security</span></div>
-                    <div class="trust-item"><i class="bi bi-clock"></i><span>24/7 Support</span></div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-float-card float-card-1"><i class="bi bi-graph-up"></i><span>+45% Savings Growth</span></div>
-                <div class="hero-float-card float-card-2"><i class="bi bi-piggy-bank"></i><span>৳1.2M Total Saved</span></div>
-                <div class="hero-float-card float-card-3"><i class="bi bi-star-fill"></i><span>4.9★ User Rating</span></div>
-                <div class="hero-image-wrapper">
-                    <div class="hero-image-placeholder">
-                        <div class="placeholder-content">
-                            <i class="bi bi-bank2"></i>
-                            <span>Finance Dashboard</span>
-                            <div class="placeholder-stats">
-                                <div class="stat-box"><span class="stat-number-hero">$4,500.00</span><span class="stat-label-hero">Total Balance</span></div>
-                                <div class="stat-box"><span class="stat-number-hero">8.5%</span><span class="stat-label-hero">Growth Rate</span></div>
-                                <div class="stat-box"><span class="stat-number-hero">4.9★</span><span class="stat-label-hero">User Rating</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="login-page">
 
-        <!-- Main Container -->
-        <div class="main-container" id="main">
 
-            <!-- Left Side -->
-            <div class="features-section" id="features">
-                <div class="feature-card welcome-card">
-                    <div class="welcome-icon-wrapper">
-                        <div class="welcome-icon no-bg">
-                            <img src="assets/icons/logo.png" alt="FinancePro Logo" class="custom-logo">
-                        </div>
-                    </div>
-                    <h1 class="welcome-title">Finance<span>Pro</span></h1>
-                    <p class="welcome-subtitle">Your Personal Finance Manager</p>
-                    <div class="welcome-badge"><i class="bi bi-shield-check"></i><span>Secure &amp; Trusted</span></div>
-                </div>
+        <div class="left-panel">
 
-                <div class="features-grid">
-                    <div class="feature-card-3d" data-tilt>
-                        <div class="card-3d-inner">
-                            <div class="card-icon"><i class="bi bi-wallet2"></i></div>
-                            <h3>Track Income</h3>
-                            <p>Log your salary, freelance, and other earnings</p>
-                            <span class="card-tag">Smart</span>
-                        </div>
-                    </div>
-                    <div class="feature-card-3d" data-tilt>
-                        <div class="card-3d-inner">
-                            <div class="card-icon"><i class="bi bi-credit-card"></i></div>
-                            <h3>Manage Expenses</h3>
-                            <p>Track every purchase and daily spending</p>
-                            <span class="card-tag">Secure</span>
-                        </div>
-                    </div>
-                    <div class="feature-card-3d" data-tilt>
-                        <div class="card-3d-inner">
-                            <div class="card-icon"><i class="bi bi-piggy-bank"></i></div>
-                            <h3>Build Savings</h3>
-                            <p>Set savings goals and watch your money grow</p>
-                            <span class="card-tag">Pro</span>
-                        </div>
-                    </div>
-                    <div class="feature-card-3d" data-tilt>
-                        <div class="card-3d-inner">
-                            <div class="card-icon"><i class="bi bi-bar-chart"></i></div>
-                            <h3>Smart Analytics</h3>
-                            <p>Visual insights into your spending habits</p>
-                            <span class="card-tag">Trusted</span>
-                        </div>
-                    </div>
-                </div>
+            <h1>Finance-Pro</h1>
 
-                <div class="stats-bar">
-                    <div class="stat-item"><span class="stat-number">50K+</span><span class="stat-label">Active Users</span></div>
-                    <div class="stat-item"><span class="stat-number">৳2B+</span><span class="stat-label">Total Tracked</span></div>
-                    <div class="stat-item"><span class="stat-number">4.9★</span><span class="stat-label">User Rating</span></div>
-                </div>
+            <p>
+                Smart Personal Finance Management System
+            </p>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-quote"><i class="bi bi-quote"></i></div>
-                    <p class="testimonial-text">"FinancePro helped me save over ৳50,000 in just 6 months! The tracking and goal features are life-changing."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar-placeholder"><i class="bi bi-person-fill"></i></div>
-                        <div><span class="author-name">Sarah Ahmed</span><span class="author-role">Premium User</span></div>
-                    </div>
-                </div>
+            <div class="illustration">
+                🏦
             </div>
 
-            <!-- Right Side - Login -->
-            <div class="login-wrapper">
-                <div class="login-card-3d" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="login-card-inner">
-                        <div class="login-header">
-                            <div class="login-brand-wrapper">
-                                <div class="login-brand-icon no-bg">
-                                    <img src="assets/icons/logo.png" alt="FinancePro Logo" class="login-logo-img">
-                                </div>
-                            </div>
-                            <h2>Welcome Back</h2>
-                            <p>Sign in to manage your personal finances</p>
-                        </div>
+            <div class="feature-box">
 
-                        <form id="loginForm" onsubmit="handleLogin(event)" class="login-form">
-                            <div class="form-group">
-                                <label><i class="bi bi-envelope"></i> Email Address</label>
-                                <div class="input-group-3d">
-                                    <input type="email" id="emailInput" value="demo@financepro.com" placeholder="Enter your email" required>
-                                    <i class="bi bi-envelope-fill input-icon"></i>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="bi bi-lock"></i> Password</label>
-                                <div class="input-group-3d">
-                                    <input type="password" id="passwordInput" value="password123" placeholder="Enter your password" required>
-                                    <i class="bi bi-lock-fill input-icon"></i>
-                                </div>
-                            </div>
-                            <div class="form-options-3d">
-                                <label class="checkbox-3d"><input type="checkbox" id="rememberMe" checked><span>Remember me</span></label>
-                                <a href="#">Forgot password?</a>
-                            </div>
-                            <div id="loginError" class="error-message-3d"><i class="bi bi-exclamation-circle"></i> Invalid email or password</div>
-                            <button type="submit" class="login-btn-3d"><span>Sign In</span><i class="bi bi-arrow-right"></i></button>
-                        </form>
-
-                        <div class="divider-3d"><span>Or continue with</span></div>
-                        <div class="social-login-3d">
-                            <button class="social-btn google" onclick="alert('Google login coming soon!')"><i class="bi bi-google"></i><span>Google</span></button>
-                            <button class="social-btn apple" onclick="alert('Apple login coming soon!')"><i class="bi bi-apple"></i><span>Apple</span></button>
-                        </div>
-                        <div class="demo-box-3d"><i class="bi bi-info-circle"></i><span>Demo: <strong>demo@financepro.com</strong> / <strong>password123</strong></span></div>
-                        <div class="login-footer-3d">Don't have an account? <a href="#">Sign up for free</a></div>
-                    </div>
+                <div>
+                    <i class="bi bi-shield-check"></i>
+                    Secure Banking Experience
                 </div>
+
+                <div>
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Track Income & Expenses
+                </div>
+
+                <div>
+                    <i class="bi bi-pie-chart-fill"></i>
+                    Advanced Analytics Dashboard
+                </div>
+
             </div>
+
         </div>
 
-        <!-- Showcase -->
-        <section class="showcase-section">
-            <div class="showcase-header">
-                <span class="showcase-tag">Why FinancePro</span>
-                <h2>Everything You Need for Personal Finance</h2>
-                <p>Powerful features designed to help you take control of your financial future</p>
-            </div>
-            <div class="showcase-grid">
-                <div class="showcase-item"><div class="showcase-icon"><i class="bi bi-phone"></i></div><h4>Mobile First</h4><p>Access your finances anywhere, anytime from any device</p></div>
-                <div class="showcase-item"><div class="showcase-icon"><i class="bi bi-lock"></i></div><h4>Bank Level Security</h4><p>256-bit encryption and enterprise-grade security protocols</p></div>
-                <div class="showcase-item"><div class="showcase-icon"><i class="bi bi-graph-up"></i></div><h4>Real-time Analytics</h4><p>Visual insights and reports to track your financial health</p></div>
-                <div class="showcase-item"><div class="showcase-icon"><i class="bi bi-headset"></i></div><h4>24/7 Support</h4><p>Dedicated support team ready to help you anytime</p></div>
-            </div>
-        </section>
+        <div class="right-panel">
 
-        <!-- Testimonials -->
-        <section class="testimonials-section">
-            <div class="testimonials-header"><span class="testimonials-tag">Testimonials</span><h2>What Our Users Say</h2></div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card-3d" data-tilt>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p>"FinancePro helped me save over ৳50,000 in just 3 months! The goal tracking feature is amazing."</p>
-                    <div class="testimonial-user"><span class="user-name">Md. Rahman</span><span class="user-location">Dhaka, Bangladesh</span></div>
-                </div>
-                <div class="testimonial-card-3d" data-tilt>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p>"Finally a personal finance app that actually works! I can track all my income and expenses easily."</p>
-                    <div class="testimonial-user"><span class="user-name">Tasnim Jahan</span><span class="user-location">Chittagong, Bangladesh</span></div>
-                </div>
-                <div class="testimonial-card-3d" data-tilt>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p>"The savings goals and analytics have completely changed how I manage my money. Highly recommended!"</p>
-                    <div class="testimonial-user"><span class="user-name">Kamal Hossain</span><span class="user-location">Sylhet, Bangladesh</span></div>
-                </div>
-            </div>
-        </section>
+            <div class="login-card">
 
-        <!-- CTA -->
-        <section class="cta-section">
-            <div class="cta-content">
-                <h2>Ready to Take Control of Your Finances?</h2>
-                <p>Join thousands of satisfied users and start tracking your personal finances today.</p>
-                <a href="#main" class="cta-btn" id="ctaGetStarted">Get Started Free <i class="bi bi-arrow-right"></i></a>
-            </div>
-        </section>
+                <div class="logo">
 
-        <!-- Footer -->
-        <footer class="main-footer">
-            <div class="footer-container">
-                <div class="footer-brand">
-                    <div class="footer-brand-icon no-bg"><img src="assets/icons/logo.png" alt="FinancePro Logo" class="footer-logo-img"></div>
-                    <span class="footer-brand-text">Finance<span>Pro</span></span>
+                    <div class="logo-icon">
+                        <i class="bi bi-bank2"></i>
+                    </div>
+
+                    <div class="brand">
+                        Finance-Pro
+                    </div>
+
+                    <div class="subtitle">
+                        Welcome Back
+                    </div>
+
                 </div>
-                <div class="footer-links">
-                    <a href="#"><i class="bi bi-shield-check"></i> Privacy</a>
-                    <a href="#"><i class="bi bi-file-text"></i> Terms</a>
-                    <a href="#"><i class="bi bi-headset"></i> Support</a>
-                    <a href="#"><i class="bi bi-envelope"></i> Contact</a>
-                    <a href="#"><i class="bi bi-blog"></i> Blog</a>
-                    <a href="#"><i class="bi bi-question-circle"></i> FAQ</a>
+
+                <div class="mb-3">
+
+                    <label>Email Address</label>
+
+                    <input id="email" type="email" class="form-control" placeholder="Enter email">
+
                 </div>
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+
+                <div class="mb-3">
+
+                    <label>Password</label>
+
+                    <input id="password" type="password" class="form-control" placeholder="Enter password">
+
                 </div>
-                <div class="footer-bottom"><p>&copy; 2026 FinancePro. All rights reserved. Built with <i class="bi bi-heart-fill text-red-500"></i> for your financial freedom.</p></div>
+
+                <div class="d-flex justify-content-between mb-3">
+
+                    <div>
+
+                        <input type="checkbox">
+
+                        Remember Me
+
+                    </div>
+
+                    <a href="#" class="text-white">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+                <button id="loginBtn" class="btn login-btn w-100">
+
+                    <i class="bi bi-box-arrow-in-right"></i>
+
+                    Login
+
+                </button>
+
+                <button class="btn btn-light w-100 mt-3 google-btn">
+
+                    <i class="bi bi-google"></i>
+
+                    Continue with Google
+
+                </button>
+
+                <div class="demo-box">
+
+                    <strong>Demo Account</strong>
+
+                    <br>
+
+                    Email: admin@gmail.com
+
+                    <br>
+
+                    Password: 123456
+
+                </div>
+
+                <div class="stats">
+
+                    <div>
+                        <h5>10K+</h5>
+                        <small>Users</small>
+                    </div>
+
+                    <div>
+                        <h5>৳50M+</h5>
+                        <small>Transactions</small>
+                    </div>
+
+                    <div>
+                        <h5>99.9%</h5>
+                        <small>Secure</small>
+                    </div>
+
+                </div>
+
             </div>
-        </footer>
+
+        </div>
+
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-    <script src="js/app.js"></script>
-    <script>
-        // 3D Tilt Effect
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.feature-card-3d, .testimonial-card-3d').forEach(card => {
-                VanillaTilt.init(card, { max: 8, speed: 300, glare: false, scale: 1.05, perspective: 800 });
-            });
-            const loginCard = document.querySelector('.login-card-3d');
-            if (loginCard) {
-                VanillaTilt.init(loginCard, { max: 12, speed: 400, glare: true, 'max-glare': 0.15, scale: 1.02, perspective: 1000 });
-            }
-        });
+    <script src="js/auth.js"></script>
 
-        // Login Handler
-        function handleLogin(e) {
-            e.preventDefault();
-            const email = document.getElementById('emailInput').value.trim();
-            const password = document.getElementById('passwordInput').value.trim();
-            const errorDiv = document.getElementById('loginError');
-
-            if (email === 'demo@financepro.com' && password === 'password123') {
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userName', 'Nayeem');
-                window.location.href = 'pages/dashboard.html';
-            } else {
-                errorDiv.classList.add('show');
-                errorDiv.innerHTML = '<i class="bi bi-exclamation-circle"></i> Invalid email or password. Please try again.';
-                document.getElementById('loginForm').style.animation = 'shake 0.5s ease';
-                setTimeout(() => { document.getElementById('loginForm').style.animation = ''; }, 500);
-            }
-        }
-
-        // Get Started Buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('isLoggedIn') === 'true') {
-                window.location.href = 'pages/dashboard.html';
-            }
-            document.querySelectorAll('#getStartedBtn, #ctaGetStarted').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    setTimeout(() => document.getElementById('emailInput').focus(), 800);
-                });
-            });
-            document.querySelectorAll('#emailInput, #passwordInput').forEach(input => {
-                input.addEventListener('input', function() { document.getElementById('loginError').classList.remove('show'); });
-            });
-        });
-    </script>
 </body>
+
 </html>
