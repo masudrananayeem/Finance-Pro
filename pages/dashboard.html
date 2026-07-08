@@ -4,595 +4,677 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nayeem Finance Dashboard</title>
+    <title>Finance Pro - Dashboard</title>
 
+  <!-- FAVICON - Full Package -->
+    <!-- ========================================== -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <link rel="stylesheet" href="../css/dashboard.css">
-
     <link rel="stylesheet" href="../css/darkmode.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* ===== STAT CARD ICON WITH LOGO ===== */
+        .stat-icon-wrapper {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            background: none !important;
+            box-shadow: none !important;
+        }
+
+        .stat-icon-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+        .stat-icon-wrapper.blue {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+        }
+        .stat-icon-wrapper.green {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+        .stat-icon-wrapper.red {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+        }
+        .stat-icon-wrapper.gold {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        /* ===== CUSTOM LOGO FOR CARDS ===== */
+        .card-logo-icon {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            background: none !important;
+            box-shadow: none !important;
+        }
+
+        .card-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* ===== DARK MODE ADJUSTMENTS ===== */
+        body.dark-mode .stat-icon-wrapper.blue {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        }
+        body.dark-mode .stat-icon-wrapper.green {
+            background: linear-gradient(135deg, #047857, #059669);
+        }
+        body.dark-mode .stat-icon-wrapper.red {
+            background: linear-gradient(135deg, #b91c1c, #dc2626);
+        }
+        body.dark-mode .stat-icon-wrapper.gold {
+            background: linear-gradient(135deg, #b45309, #d97706);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .stat-icon-wrapper {
+                width: 44px;
+                height: 44px;
+            }
+            .stat-icon-wrapper img {
+                padding: 6px;
+            }
+        }
+        @media (max-width: 480px) {
+            .stat-icon-wrapper {
+                width: 36px;
+                height: 36px;
+            }
+            .stat-icon-wrapper img {
+                padding: 4px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Premium Navbar -->
-
-    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
-
-        <div class="container-fluid px-4">
-
-            <!-- Logo -->
-
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="dashboard.html">
-
-                <i class="bi bi-bank2 fs-4 me-2"></i>
-
-                Finance-Pro
-
+    <!-- ===== NAVBAR ===== -->
+    <nav class="top-navbar fixed-top">
+        <div class="nav-container">
+            <a class="brand" href="dashboard.html">
+                <span class="brand-logo-wrapper">
+                    <img src="../assets/icons/logo.png" alt="FinancePro" class="brand-logo-img">
+                </span>
             </a>
-
-            <!-- Mobile Toggle -->
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-
-                <span class="navbar-toggler-icon"></span>
-
+            <button class="hamburger-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
             </button>
-
-            <!-- Menu -->
-
-            <div class="collapse navbar-collapse" id="navbarMenu">
-
-                <ul class="navbar-nav mx-auto">
-
-                    <li class="nav-item">
-
-                        <a class="nav-link active" href="dashboard.html">
-
-                            <i class="bi bi-grid-1x2-fill me-1"></i>
-
-                            Dashboard
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="profile.html">
-
-                            <i class="bi bi-person-fill me-1"></i>
-
-                            Profile
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="reports.html">
-
-                            <i class="bi bi-bar-chart-fill me-1"></i>
-
-                            Reports
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="settings.html">
-
-                            <i class="bi bi-gear-fill me-1"></i>
-
-                            Settings
-
-                        </a>
-
-                    </li>
-
-                </ul>
-
-                <!-- Right Side -->
-
-                <div class="d-flex align-items-center">
-
-                    <!-- Notification -->
-
-                    <button class="notification-btn position-relative me-3">
-
-                        <i class="bi bi-bell-fill"></i>
-
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-
-                            3
-
-                        </span>
-
-                    </button>
-
-                    <!-- User Dropdown -->
-
-                    <div class="dropdown">
-
-                        <a href="#" class="d-flex align-items-center text-decoration-none text-white dropdown-toggle"
-                            data-bs-toggle="dropdown">
-
-                            <img src="../assets/images/image.jpeg" class="profile-img-nav me-2" alt="Profile">
-
-                            <span class="fw-semibold">
-
-                                Nayeem
-
-                            </span>
-
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-
-                            <li>
-
-                                <a class="dropdown-item" href="profile.html">
-
-                                    <i class="bi bi-person-circle me-2"></i>
-
-                                    My Profile
-
-                                </a>
-
-                            </li>
-
-                            <li>
-
-                                <a class="dropdown-item" href="settings.html">
-
-                                    <i class="bi bi-gear me-2"></i>
-
-                                    Settings
-
-                                </a>
-
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li>
-
-                                <a class="dropdown-item text-danger" href="../index.html">
-
-                                    <i class="bi bi-box-arrow-right me-2"></i>
-
-                                    Logout
-
-                                </a>
-
-                            </li>
-
-                        </ul>
-
+            <ul class="nav-links">
+                <li class="active"><a href="dashboard.html"><i class="bi bi-grid-fill"></i><span>Dashboard</span></a></li>
+                <li><a href="transactions.html"><i class="bi bi-arrow-left-right"></i><span>Transactions</span></a></li>
+                <li><a href="budget.html"><i class="bi bi-pie-chart-fill"></i><span>Budget</span></a></li>
+                <li><a href="goals.html"><i class="bi bi-trophy-fill"></i><span>Goals</span></a></li>
+                <li><a href="savings.html"><i class="bi bi-piggy-bank-fill"></i><span>Savings</span></a></li>
+                <li><a href="notes.html"><i class="bi bi-sticky-fill"></i><span>Notes</span></a></li>
+                <li><a href="settings.html"><i class="bi bi-gear-fill"></i><span>Settings</span></a></li>
+                <li><a href="profile.html"><i class="bi bi-person-fill"></i><span>Profile</span></a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Night Mode">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="notif-btn" id="notifBtn">
+                    <i class="bi bi-bell-fill"></i>
+                    <span class="notif-dot"></span>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <img src="../assets/images/image.jpeg" alt="Profile" class="profile-img">
+                    <div class="profile-info">
+                        <span class="profile-name" id="userName">Nayeem</span>
+                        <span class="profile-role">Premium</span>
                     </div>
-
+                    <i class="bi bi-chevron-down"></i>
                 </div>
-
+                <a href="../index.html" class="logout-btn" title="Logout" onclick="handleLogout(event)">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
             </div>
-
         </div>
-
     </nav>
 
-    <!-- welcome carousel -->
-    <div class="container mt-4">
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
 
-        <div id="welcomeCarousel" class="carousel slide welcome-carousel" data-bs-ride="carousel">
+        <!-- Greeting -->
+        <section class="greeting-section">
+            <div>
+                <span class="greeting-time" id="greetingTime">Good Morning 👋</span>
+                <h1 class="greeting-title">Welcome back, <span id="greetingName">Nayeem</span></h1>
+                <p class="greeting-sub">Here's your financial overview for this month</p>
+            </div>
+            <div class="greeting-date">
+                <span><i class="bi bi-calendar3"></i> <span id="currentMonth">July 2026</span></span>
+            </div>
+        </section>
 
-            <div class="carousel-inner">
-
-                <!-- Slide 1 -->
-
-                <div class="carousel-item active">
-
-                    <div class="welcome-slide slide1">
-
-                        <div class="overlay">
-
-                            <h2>
-                                Welcome Back, Nayeem 👋
-                            </h2>
-
-                            <p>
-                                Manage your finances smartly.
-                            </p>
-
-                        </div>
-
-                    </div>
-
+        <!-- Stats with Logo Icons -->
+        <section class="stats-grid">
+            <!-- Total Balance -->
+            <div class="stat-card">
+                <div class="stat-icon-wrapper blue">
+                    <img src="../assets/icons/logo.png" alt="Balance">
                 </div>
-
-                <!-- Slide 2 -->
-
-                <div class="carousel-item">
-
-                    <div class="welcome-slide slide2">
-
-                        <div class="overlay">
-
-                            <h2>
-                                Track Every Transaction
-                            </h2>
-
-                            <p>
-                                Stay in control of your money.
-                            </p>
-
-                        </div>
-
-                    </div>
-
+                <div class="stat-details">
+                    <span class="stat-label">Total Balance</span>
+                    <h3 class="stat-value" id="totalBalance">৳0</h3>
+                    <span class="stat-change positive">↑ 12.5% from last month</span>
                 </div>
-
-                <!-- Slide 3 -->
-
-                <div class="carousel-item">
-
-                    <div class="welcome-slide slide3">
-
-                        <div class="overlay">
-
-                            <h2>
-                                Build Your Savings Goal
-                            </h2>
-
-                            <p>
-                                Small savings create big results.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#welcomeCarousel" data-bs-slide="prev">
-
-                <span class="carousel-control-prev-icon"></span>
-
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#welcomeCarousel" data-bs-slide="next">
-
-                <span class="carousel-control-next-icon"></span>
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- Summary Cards -->
-
-    <div class="container mt-4">
-
-        <div class="row">
-
-            <div class="col-md-3">
-
-                <div class="finance-card balance-card">
-
-                    <i class="bi bi-wallet2"></i>
-
-                    <h6>
-                        Current Balance
-                    </h6>
-
-                    <h2 id="balance">
-                        ৳1200
-                    </h2>
-
+            <!-- Total Income -->
+            <div class="stat-card">
+                <div class="stat-icon-wrapper green">
+                    <img src="../assets/icons/logo.png" alt="Income">
                 </div>
-
+                <div class="stat-details">
+                    <span class="stat-label">Total Income</span>
+                    <h3 class="stat-value" id="totalIncome">৳0</h3>
+                    <span class="stat-change positive">↑ 8.2% this month</span>
+                </div>
             </div>
 
-            <div class="col-md-3">
-
-                <div class="finance-card income-card">
-
-                    <i class="bi bi-cash-stack"></i>
-
-                    <h6>
-                        Total Income
-                    </h6>
-
-                    <h2 id="income">
-                        ৳0
-                    </h2>
-
+            <!-- Total Expenses -->
+            <div class="stat-card">
+                <div class="stat-icon-wrapper red">
+                    <img src="../assets/icons/logo.png" alt="Expenses">
                 </div>
-
+                <div class="stat-details">
+                    <span class="stat-label">Total Expenses</span>
+                    <h3 class="stat-value" id="totalExpense">৳0</h3>
+                    <span class="stat-change negative">↓ 3.1% this month</span>
+                </div>
             </div>
 
-            <div class="col-md-3">
-
-                <div class="finance-card expense-card">
-
-                    <i class="bi bi-graph-down"></i>
-
-                    <h6>
-                        Total Expense
-                    </h6>
-
-                    <h2 id="expense">
-                        ৳0
-                    </h2>
-
+            <!-- Total Savings -->
+            <div class="stat-card">
+                <div class="stat-icon-wrapper gold">
+                    <img src="../assets/icons/logo.png" alt="Savings">
                 </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="finance-card savings-card">
-
-                    <i class="bi bi-piggy-bank"></i>
-
-                    <h6>
-                        Total Savings
-                    </h6>
-
-                    <h2 id="savings">
-                        ৳1200
-                    </h2>
-
+                <div class="stat-details">
+                    <span class="stat-label">Total Savings</span>
+                    <h3 class="stat-value" id="totalSavings">৳0</h3>
+                    <span class="stat-change positive">↑ 5.7% this month</span>
                 </div>
-
             </div>
+        </section>
 
-        </div>
-
-    </div>
-
-    <!-- Finance Forms -->
-
-
-    <div class="container mt-4">
-
-        <div class="row g-4">
-
-            <!-- Income Card -->
-
-            <div class="col-lg-6 col-md-12">
-
-                <div class="finance-form income-form">
-
-                    <div class="form-header">
-
-                        <div class="icon-box bg-success">
-
-                            <i class="bi bi-cash-stack"></i>
-
+        <!-- Chart & Quick Actions -->
+        <section class="row g-4 mt-1">
+            <div class="col-lg-8">
+                <div class="chart-card">
+                    <div class="card-header-custom">
+                        <h5>
+                            <span class="card-logo-icon">
+                                <img src="../assets/icons/logo.png" alt="FinancePro">
+                            </span>
+                            Spending Overview
+                        </h5>
+                        <div class="card-actions">
+                            <span class="badge bg-light text-dark rounded-pill">This Month</span>
+                            <button class="btn-icon" onclick="refreshChartData()"><i class="bi bi-arrow-clockwise"></i></button>
                         </div>
-
-                        <div>
-
-                            <h4 class="mb-0">
-                                Add Income
-                            </h4>
-
-                            <small>
-                                Add salary, bonus or other income
-                            </small>
-
+                    </div>
+                    <canvas id="financeChart" height="220"></canvas>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="quick-actions-card">
+                    <h5>
+                        <span class="card-logo-icon">
+                            <img src="../assets/icons/logo.png" alt="FinancePro">
+                        </span>
+                        Quick Actions
+                    </h5>
+                    <div class="action-grid">
+                        <button class="action-btn" onclick="window.location.href='transactions.html'">
+                            <i class="bi bi-plus-circle-fill text-success"></i>
+                            <span>Add Income</span>
+                        </button>
+                        <button class="action-btn" onclick="window.location.href='transactions.html'">
+                            <i class="bi bi-dash-circle-fill text-danger"></i>
+                            <span>Add Expense</span>
+                        </button>
+                        <button class="action-btn" onclick="showTransferModal()">
+                            <i class="bi bi-send-fill text-primary"></i>
+                            <span>Transfer</span>
+                        </button>
+                        <button class="action-btn" onclick="exportFinanceData()">
+                            <i class="bi bi-file-earmark-pdf-fill text-danger"></i>
+                            <span>Export</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="monthly-summary">
+                        <div class="summary-item">
+                            <span>This Month's Income</span>
+                            <strong id="monthIncome">৳0</strong>
                         </div>
-
+                        <div class="summary-item">
+                            <span>This Month's Expenses</span>
+                            <strong id="monthExpense">৳0</strong>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Net Balance</span>
+                            <strong class="text-primary" id="netBalance">৳0</strong>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="mt-4">
-
-                        <label class="form-label">
-
-                            Amount
-
-                        </label>
-
-                        <input id="incomeInput" type="number" class="form-control custom-input"
-                            placeholder="৳ Enter amount">
-
+        <!-- Transactions & Goals -->
+        <section class="row g-4 mt-1">
+            <div class="col-lg-8">
+                <div class="transaction-card">
+                    <div class="card-header-custom">
+                        <h5>
+                            <span class="card-logo-icon">
+                                <img src="../assets/icons/logo.png" alt="FinancePro">
+                            </span>
+                            Recent Transactions
+                        </h5>
+                        <a href="transactions.html" class="text-primary text-decoration-none fw-semibold">View All</a>
                     </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Transaction</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionTable">
+                                <!-- Dynamic -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="goal-card">
+                    <div class="card-header-custom">
+                        <h5>
+                            <span class="card-logo-icon">
+                                <img src="../assets/icons/logo.png" alt="FinancePro">
+                            </span>
+                            Goals &amp; Savings
+                        </h5>
+                        <a href="goals.html" class="text-primary text-decoration-none fw-semibold">View All</a>
+                    </div>
+                    <div id="goalsPreview">
+                        <!-- Dynamic -->
+                    </div>
+                    <a href="goals.html" class="add-goal-btn">
+                        <i class="bi bi-plus-circle"></i> Add New Goal
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                    <div class="mt-3">
+    </main>
 
-                        <label class="form-label">
-
-                            Income Source
-
-                        </label>
-
-                        <select id="incomeCategory" class="form-select custom-input">
-
-                            <option>Salary</option>
-                            <option>Freelancing</option>
-                            <option>Business</option>
-                            <option>Bonus</option>
-                            <option>Investment</option>
-                            <option>Other</option>
-
+    <!-- ===== TRANSFER MODAL ===== -->
+    <div class="modal fade" id="transferModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="card-logo-icon">
+                            <img src="../assets/icons/logo.png" alt="FinancePro">
+                        </span>
+                        Transfer Money
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">From Account</label>
+                        <select class="form-select">
+                            <option>Main Account (৳1,24,850)</option>
+                            <option>Savings Account (৳1,240)</option>
                         </select>
-
                     </div>
-
-                    <button id="incomeBtn" class="btn btn-success custom-btn mt-4">
-
-                        <i class="bi bi-plus-circle"></i>
-
-                        Add Income
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <!-- Expense Card -->
-
-            <div class="col-lg-6 col-md-12">
-
-                <div class="finance-form expense-form">
-
-                    <div class="form-header">
-
-                        <div class="icon-box bg-danger">
-
-                            <i class="bi bi-credit-card"></i>
-
-                        </div>
-
-                        <div>
-
-                            <h4 class="mb-0">
-                                Add Expense
-                            </h4>
-
-                            <small>
-                                Track your daily spending
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                    <div class="mt-4">
-
-                        <label class="form-label">
-
-                            Amount
-
-                        </label>
-
-                        <input id="expenseInput" type="number" class="form-control custom-input"
-                            placeholder="৳ Enter amount">
-
-                    </div>
-
-                    <div class="mt-3">
-
-                        <label class="form-label">
-
-                            Category
-
-                        </label>
-
-                        <select id="expenseCategory" class="form-select custom-input">
-
-                            <option>Food</option>
-                            <option>Shopping</option>
-                            <option>Travel</option>
-                            <option>Education</option>
-                            <option>Medical</option>
-                            <option>Other</option>
-
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">To Account</label>
+                        <select class="form-select">
+                            <option>Savings Account (৳1,240)</option>
+                            <option>Main Account (৳1,24,850)</option>
                         </select>
-
                     </div>
-
-                    <button id="expenseBtn" class="btn btn-danger custom-btn mt-4">
-
-                        <i class="bi bi-dash-circle"></i>
-
-                        Withdraw
-
-                    </button>
-
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Amount (৳)</label>
+                        <input type="number" class="form-control" placeholder="Enter amount">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Description</label>
+                        <input type="text" class="form-control" placeholder="Transfer description">
+                    </div>
                 </div>
-
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" onclick="alert('Transfer initiated successfully!')">
+                        <i class="bi bi-check-circle me-1"></i> Transfer
+                    </button>
+                </div>
             </div>
-
         </div>
-
     </div>
 
-
-
-    <!-- Analytics -->
-
-    <div class="container mt-4">
-
-        <div class="dashboard-box">
-
-            <h4>
-                📈 Financial Analytics
-            </h4>
-
-            <canvas id="financeChart"></canvas>
-
-        </div>
-
+    <!-- ===== FAB ===== -->
+    <button class="fab-btn" id="fabBtn"><i class="bi bi-plus-lg"></i></button>
+    <div class="fab-menu" id="fabMenu">
+        <button class="fab-item" onclick="window.location.href='transactions.html'">
+            <i class="bi bi-cash-stack text-success"></i>
+            <span>Income</span>
+        </button>
+        <button class="fab-item" onclick="window.location.href='transactions.html'">
+            <i class="bi bi-credit-card text-danger"></i>
+            <span>Expense</span>
+        </button>
+        <button class="fab-item" onclick="showTransferModal()">
+            <i class="bi bi-send text-primary"></i>
+            <span>Transfer</span>
+        </button>
+        <button class="fab-item" onclick="window.location.href='savings.html'">
+            <i class="bi bi-wallet2 text-warning"></i>
+            <span>Savings</span>
+        </button>
     </div>
 
-    <!-- Recent Transactions -->
-
-    <div class="container mt-4 mb-5">
-
-        <div class="dashboard-box">
-
-            <h4>
-                📋 Recent Transactions
-            </h4>
-
-            <table class="table table-hover">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Amount</th>
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="transactionTable">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-    <!-- Scripts -->
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="../js/app.js"></script>
-
-    <script src="../js/chart.js"></script>
-
-    <script src="../js/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script src="../js/app.js">
+    </script>
+    <script src="../js/chart.js">
+    </script>
+    <script src="../js/navbar.js">
+    </script>
 
     <script>
-
-        if (localStorage.getItem("theme") === "dark") {
-
-            document.body.classList.add("dark-mode");
-
+        // ==========================================
+        // ===== TRANSFER MODAL =====
+        // ==========================================
+        function showTransferModal() {
+            const modal = new bootstrap.Modal(document.getElementById('transferModal'));
+            modal.show();
         }
 
+        // ==========================================
+        // ===== EXPORT DATA =====
+        // ==========================================
+        function exportFinanceData() {
+            try {
+                const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+                if (transactions.length === 0) {
+                    alert('No data to export!');
+                    return;
+                }
 
+                let csv = 'Date,Category,Type,Amount,Description,Status\n';
+                transactions.forEach(t => {
+                    csv +=
+                        `${t.date},${t.category},${t.type},${t.amount.toFixed(2)},${t.description || ''},${t.status || 'Completed'}\n`;
+                });
+
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `finance_data_${new Date().toISOString().split('T')[0]}.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                alert('Data exported successfully!');
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Error exporting data. Please try again.');
+            }
+        }
+
+        // ==========================================
+        // ===== UPDATE STATS =====
+        // ==========================================
+        function updateStats() {
+            try {
+                const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+                let totalIncome = 0,
+                    totalExpense = 0;
+                let monthIncome = 0,
+                    monthExpense = 0;
+
+                const now = new Date();
+                const currentMonth = now.getMonth();
+                const currentYear = now.getFullYear();
+
+                transactions.forEach(t => {
+                    const date = new Date(t.date);
+                    const isThisMonth = date.getMonth() === currentMonth && date.getFullYear() === currentYear;
+
+                    if (t.type === 'income') {
+                        totalIncome += t.amount;
+                        if (isThisMonth) monthIncome += t.amount;
+                    } else {
+                        totalExpense += t.amount;
+                        if (isThisMonth) monthExpense += t.amount;
+                    }
+                });
+
+                const balance = totalIncome - totalExpense;
+                const savings = JSON.parse(localStorage.getItem('savings') || '[]');
+                const totalSavings = savings.reduce((sum, s) => sum + s.amount, 0);
+
+                document.getElementById('totalBalance').textContent = '৳' + balance.toFixed(2);
+                document.getElementById('totalIncome').textContent = '৳' + totalIncome.toFixed(2);
+                document.getElementById('totalExpense').textContent = '৳' + totalExpense.toFixed(2);
+                document.getElementById('totalSavings').textContent = '৳' + totalSavings.toFixed(2);
+                document.getElementById('monthIncome').textContent = '৳' + monthIncome.toFixed(2);
+                document.getElementById('monthExpense').textContent = '৳' + monthExpense.toFixed(2);
+                document.getElementById('netBalance').textContent = '৳' + (monthIncome - monthExpense).toFixed(2);
+            } catch (error) {
+                console.error('Error updating stats:', error);
+            }
+        }
+
+        // ==========================================
+        // ===== RENDER TRANSACTIONS =====
+        // ==========================================
+        function renderDashboardTransactions() {
+            try {
+                const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+                const tbody = document.getElementById('transactionTable');
+                const recent = transactions.slice(-5).reverse();
+
+                if (recent.length === 0) {
+                    tbody.innerHTML =
+                        '<tr><td colspan="4" class="text-center text-muted">No transactions yet</td></tr>';
+                    return;
+                }
+
+                const iconMap = {
+                    'Food': 'bi-egg-fried',
+                    'Salary': 'bi-cash',
+                    'Shopping': 'bi-bag',
+                    'Travel': 'bi-airplane',
+                    'Education': 'bi-book',
+                    'Medical': 'bi-heart-pulse',
+                    'Entertainment': 'bi-film',
+                    'Utilities': 'bi-lightbulb',
+                    'Other': 'bi-tag'
+                };
+
+                tbody.innerHTML = recent.map(t => {
+                    const icon = iconMap[t.category] || 'bi-tag';
+                    return `<tr>
+                                <td>
+                                    <span class="transaction-icon ${t.type === 'income' ? 'income' : 'food'}">
+                                        <i class="bi ${icon}"></i>
+                                    </span>
+                                    <span class="transaction-name">${t.category}</span>
+                                </td>
+                                <td>${new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                                <td class="${t.type === 'income' ? 'text-success' : 'text-danger'} fw-bold">
+                                    ${t.type === 'income' ? '+' : '-'}৳${t.amount.toFixed(2)}
+                                </td>
+                                <td><span class="status-badge ${t.status === 'Pending' ? 'pending' : 'completed'}">${t.status || 'Completed'}</span></td>
+                            </tr>`;
+                }).join('');
+            } catch (error) {
+                console.error('Error rendering transactions:', error);
+            }
+        }
+
+        // ==========================================
+        // ===== RENDER GOALS PREVIEW =====
+        // ==========================================
+        function renderGoalsPreview() {
+            try {
+                const goals = JSON.parse(localStorage.getItem('goals') || '[]');
+                const container = document.getElementById('goalsPreview');
+
+                if (goals.length === 0) {
+                    container.innerHTML =
+                        '<div class="text-center py-4"><i class="bi bi-trophy" style="font-size:32px;color:#d1d9e6;"></i><p class="text-muted mt-2 mb-0">No goals set. Start saving today!</p></div>';
+                    return;
+                }
+
+                const iconMap = {
+                    'bi-ssd': 'bi-ssd',
+                    'bi-piggy-bank': 'bi-piggy-bank',
+                    'bi-house': 'bi-house',
+                    'bi-car': 'bi-car',
+                    'bi-laptop': 'bi-laptop',
+                    'bi-airplane': 'bi-airplane',
+                    'bi-gift': 'bi-gift',
+                    'bi-heart': 'bi-heart'
+                };
+
+                container.innerHTML = goals.slice(0, 2).map(g => {
+                    const percent = Math.min((g.current / g.target) * 100, 100);
+                    const icon = iconMap[g.icon] || 'bi-trophy';
+                    return `<div class="goal-item" style="padding:10px 0;border-bottom:1px solid #f0f4f8;">
+                                <div class="goal-icon" style="width:36px;height:36px;font-size:16px;background:#eff6ff;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#2563eb;">
+                                    <i class="bi ${icon}"></i>
+                                </div>
+                                <div class="goal-details">
+                                    <h6 style="font-size:13px;font-weight:600;margin:0;">${g.name}</h6>
+                                    <div class="goal-progress" style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+                                        <div class="progress-track" style="flex:1;height:5px;background:#e5e9f0;border-radius:10px;overflow:hidden;">
+                                            <div class="progress-fill" style="width:${percent}%;height:100%;background:linear-gradient(90deg,#059669,#10b981);border-radius:10px;"></div>
+                                        </div>
+                                        <span class="goal-percent" style="font-size:12px;font-weight:700;color:#059669;">${percent.toFixed(0)}%</span>
+                                    </div>
+                                    <span style="font-size:11px;color:#6b7280;">৳${g.current.toFixed(2)} / ৳${g.target.toFixed(2)}</span>
+                                </div>
+                            </div>`;
+                }).join('');
+            } catch (error) {
+                console.error('Error rendering goals:', error);
+            }
+        }
+
+        // ==========================================
+        // ===== FAB TOGGLE =====
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const fabBtn = document.getElementById('fabBtn');
+            const fabMenu = document.getElementById('fabMenu');
+
+            if (fabBtn && fabMenu) {
+                fabBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    fabMenu.classList.toggle('open');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!fabBtn.contains(e.target) && !fabMenu.contains(e.target)) {
+                        fabMenu.classList.remove('open');
+                    }
+                });
+            }
+
+            // Initialize dashboard
+            updateStats();
+            renderDashboardTransactions();
+            renderGoalsPreview();
+
+            // Initialize chart with delay
+            setTimeout(function() {
+                if (typeof initFinanceChart === 'function') {
+                    try {
+                        initFinanceChart();
+                    } catch (error) {
+                        console.warn('Chart initialization warning:', error);
+                    }
+                }
+            }, 800);
+
+            // Auto-refresh every 30 seconds
+            setInterval(function() {
+                updateStats();
+                renderDashboardTransactions();
+                renderGoalsPreview();
+                if (typeof refreshChartData === 'function') {
+                    try {
+                        refreshChartData();
+                    } catch (error) {
+                        console.warn('Chart refresh warning:', error);
+                    }
+                }
+            }, 30000);
+
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', function() {
+                if (typeof destroyChart === 'function') {
+                    try {
+                        destroyChart();
+                    } catch (error) {
+                        console.warn('Chart cleanup warning:', error);
+                    }
+                }
+            });
+        });
+
+        // ==========================================
+        // ===== LOGOUT HANDLER =====
+        // ==========================================
+        function handleLogout(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userName');
+                window.location.href = '../index.html';
+            }
+        }
     </script>
 
 </body>
