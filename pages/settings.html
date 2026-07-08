@@ -2,57 +2,368 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Pro - Settings</title>
 
-    <title>Settings</title>
+
+    <!-- FAVICON - Full Package -->
+    <!-- ========================================== -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/darkmode.css">
 
+    <style>
+        .settings-header { margin-bottom: 28px; }
+        .settings-header h2 { font-weight: 700;
+            color: #0b1120;
+            margin: 0; }
+        .settings-header p { color: #6b7280;
+            margin: 0;
+            font-size: 14px; }
+
+        .settings-section {
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px 28px;
+            border: 1px solid #eef2f6;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .settings-section:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04); }
+        .settings-section .section-title { font-weight: 700;
+            color: #0b1120;
+            font-size: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eef2f6; }
+
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f4f8;
+        }
+        .settings-item:last-child { border-bottom: none; }
+        .settings-item .item-info h6 { font-weight: 600;
+            color: #0b1120;
+            margin: 0;
+            font-size: 14px; }
+        .settings-item .item-info p { margin: 0;
+            color: #6b7280;
+            font-size: 13px; }
+
+        .toggle-switch {
+            width: 48px;
+            height: 26px;
+            background: #d1d9e6;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .toggle-switch.active { background: #3b82f6; }
+        .toggle-switch .toggle-dot {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .toggle-switch.active .toggle-dot { left: 25px; }
+
+        .settings-item select,
+        .settings-item input[type="text"] {
+            padding: 8px 14px;
+            border: 2px solid #e8edf3;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #1a1a2e;
+            background: #fff;
+            transition: all 0.3s ease;
+            width: 160px;
+        }
+        .settings-item select:focus,
+        .settings-item input[type="text"]:focus {
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
+        }
+
+        .danger-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #fef2f2;
+            color: #dc2626;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .danger-btn:hover { background: #fecaca; }
+
+        body.dark-mode .settings-header h2 { color: #fff; }
+        body.dark-mode .settings-section { background: #1a2a4a;
+            border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-mode .settings-section .section-title { color: #fff;
+            border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-mode .settings-item { border-color: rgba(255, 255, 255, 0.04); }
+        body.dark-mode .settings-item .item-info h6 { color: #fff; }
+        body.dark-mode .settings-item .item-info p { color: #94a3b8; }
+        body.dark-mode .settings-item select,
+        body.dark-mode .settings-item input[type="text"] { background: #0f172a;
+            border-color: rgba(255, 255, 255, 0.06);
+            color: #e5e9f0; }
+        body.dark-mode .toggle-switch { background: #334155; }
+        body.dark-mode .danger-btn { background: rgba(239, 68, 68, 0.1);
+            color: #ef4444; }
+        body.dark-mode .danger-btn:hover { background: rgba(239, 68, 68, 0.2); }
+
+        @media (max-width: 768px) {
+            .settings-item { flex-wrap: wrap;
+                gap: 12px; }
+            .settings-item select,
+            .settings-item input[type="text"] { width: 100%;
+                max-width: 200px; }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="container mt-5">
-
-        <div class="card p-4">
-
-            <h3>Settings</h3>
-
-            <hr>
-
-            <div class="form-check form-switch">
-
-                <input class="form-check-input" type="checkbox" id="darkMode">
-
-                <label class="form-check-label">
-
-                    Dark Mode
-
-                </label>
-
+    <!-- Navbar -->
+    <nav class="top-navbar fixed-top">
+        <div class="nav-container">
+            <a class="brand" href="dashboard.html">
+                <span class="brand-logo-wrapper">
+                    <img src="../assets/icons/logo.png" alt="FinancePro" class="brand-logo-img">
+                </span>
+            </a>
+            <button class="hamburger-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="bi bi-grid-fill"></i><span>Dashboard</span></a></li>
+                <li><a href="transactions.html"><i class="bi bi-arrow-left-right"></i><span>Transactions</span></a></li>
+                <li><a href="budget.html"><i class="bi bi-pie-chart-fill"></i><span>Budget</span></a></li>
+                <li><a href="goals.html"><i class="bi bi-trophy-fill"></i><span>Goals</span></a></li>
+                <li><a href="savings.html"><i class="bi bi-piggy-bank-fill"></i><span>Savings</span></a></li>
+                <li><a href="notes.html"><i class="bi bi-sticky-fill"></i><span>Notes</span></a></li>
+                <li class="active"><a href="settings.html"><i class="bi bi-gear-fill"></i><span>Settings</span></a></li>
+                <li><a href="profile.html"><i class="bi bi-person-fill"></i><span>Profile</span></a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="bi bi-moon-fill"></i></button>
+                <button class="notif-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></button>
+                <div class="profile-dropdown">
+                    <img src="../assets/images/image.jpeg" alt="Profile" class="profile-img">
+                    <div class="profile-info">
+                        <span class="profile-name" id="userName">Nayeem</span>
+                        <span class="profile-role">Premium</span>
+                    </div>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <a href="../index.html" class="logout-btn" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
             </div>
+        </div>
+    </nav>
 
-            <hr>
+    <!-- Main Content -->
+    <main class="main-content">
 
-            <label>Currency</label>
-
-            <select class="form-select">
-
-                <option>BDT</option>
-                <option>USD</option>
-                <option>EUR</option>
-                <option>INR</option>
-
-            </select>
-
+        <div class="settings-header">
+            <h2>⚙️ Settings</h2>
+            <p>Manage your account preferences and application settings</p>
         </div>
 
-    </div>
+        <!-- Appearance -->
+        <div class="settings-section">
+            <div class="section-title"><i class="bi bi-palette me-2"></i>Appearance</div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Dark Mode</h6>
+                    <p>Switch between light and dark theme</p>
+                </div>
+                <div class="toggle-switch" id="darkModeToggle" onclick="toggleDarkMode()">
+                    <div class="toggle-dot"></div>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Theme Color</h6>
+                    <p>Choose your preferred accent color</p>
+                </div>
+                <select id="themeColor">
+                    <option value="#3b82f6">Blue</option>
+                    <option value="#059669">Green</option>
+                    <option value="#d97706">Gold</option>
+                    <option value="#dc2626">Red</option>
+                    <option value="#7c3aed">Purple</option>
+                </select>
+            </div>
+        </div>
 
+        <!-- Currency -->
+        <div class="settings-section">
+            <div class="section-title"><i class="bi bi-currency-dollar me-2"></i>Currency &amp; Region</div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Currency</h6>
+                    <p>Default currency for all transactions</p>
+                </div>
+                <select id="currencySelect">
+                    <option value="৳">BDT (৳)</option>
+                    <option value="$">USD ($)</option>
+                    <option value="€">EUR (€)</option>
+                    <option value="£">GBP (£)</option>
+                    <option value="₹">INR (₹)</option>
+                </select>
+            </div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Date Format</h6>
+                    <p>Format for displaying dates</p>
+                </div>
+                <select id="dateFormat">
+                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="settings-section">
+            <div class="section-title"><i class="bi bi-bell me-2"></i>Notifications</div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Email Notifications</h6>
+                    <p>Receive monthly financial reports via email</p>
+                </div>
+                <div class="toggle-switch active" onclick="this.classList.toggle('active')">
+                    <div class="toggle-dot"></div>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Budget Alerts</h6>
+                    <p>Get notified when you exceed budget limits</p>
+                </div>
+                <div class="toggle-switch active" onclick="this.classList.toggle('active')">
+                    <div class="toggle-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Management -->
+        <div class="settings-section">
+            <div class="section-title"><i class="bi bi-database me-2"></i>Data Management</div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Export Data</h6>
+                    <p>Download all your financial data as CSV</p>
+                </div>
+                <button class="btn btn-outline-primary rounded-pill px-4" onclick="exportData()">
+                    <i class="bi bi-download me-1"></i> Export
+                </button>
+            </div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Delete All Data</h6>
+                    <p>Permanently delete all your financial data</p>
+                </div>
+                <button class="danger-btn" onclick="deleteAllData()"><i class="bi bi-trash me-1"></i> Delete Data</button>
+            </div>
+        </div>
+
+        <!-- Account -->
+        <div class="settings-section">
+            <div class="section-title"><i class="bi bi-person me-2"></i>Account</div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Account Type</h6>
+                    <p>Your current subscription plan</p>
+                </div>
+                <span class="badge bg-primary rounded-pill px-3 py-2">Premium</span>
+            </div>
+            <div class="settings-item">
+                <div class="item-info">
+                    <h6>Member Since</h6>
+                    <p>January 2024</p>
+                </div>
+                <span class="text-muted">Active</span>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
     <script src="../js/navbar.js"></script>
-    <script src="../js/settings.js"></script>
 
+    <script>
+        // ===== DARK MODE TOGGLE =====
+        const darkModeToggle = document.getElementById('darkModeToggle');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.classList.add('active');
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            darkModeToggle.classList.toggle('active');
+            // Update navbar theme toggle icon
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.innerHTML = isDark ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-fill"></i>';
+            }
+        }
+
+        // ===== DELETE ALL DATA =====
+        function deleteAllData() {
+            if (!confirm('⚠️ Are you sure you want to delete ALL your financial data? This cannot be undone!')) return;
+            if (!confirm('Double confirm: Delete all data?')) return;
+
+            localStorage.removeItem('transactions');
+            localStorage.removeItem('budgets');
+            localStorage.removeItem('goals');
+            localStorage.removeItem('savings');
+            localStorage.removeItem('notes');
+
+            alert('All data has been deleted successfully.');
+            window.location.href = 'dashboard.html';
+        }
+
+        // ===== SAVE PREFERENCES =====
+        document.getElementById('currencySelect').addEventListener('change', function() {
+            localStorage.setItem('currency', this.value);
+        });
+
+        const savedCurrency = localStorage.getItem('currency');
+        if (savedCurrency) document.getElementById('currencySelect').value = savedCurrency;
+
+        document.getElementById('themeColor').addEventListener('change', function() {
+            localStorage.setItem('accentColor', this.value);
+            document.documentElement.style.setProperty('--primary-color', this.value);
+        });
+    </script>
 
 </body>
 
