@@ -1,0 +1,325 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Pro - Savings</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/favicon_io/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/darkmode.css">
+
+    <style>
+        .savings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .savings-header h2 { font-weight: 700;
+            color: #0b1120;
+            margin: 0; }
+        .savings-header p { color: #6b7280;
+            margin: 0;
+            font-size: 14px; }
+
+        .savings-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .savings-summary .s-item {
+            background: #fff;
+            border-radius: 16px;
+            padding: 18px 20px;
+            border: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .savings-summary .s-item .value { font-size: 24px;
+            font-weight: 800;
+            color: #0b1120; }
+        .savings-summary .s-item .label { font-size: 12px;
+            color: #6b7280;
+            font-weight: 500; }
+        .savings-summary .s-item .value.gold { color: #d97706; }
+        .savings-summary .s-item .value.green { color: #059669; }
+        .savings-summary .s-item .value.blue { color: #2563eb; }
+
+        .savings-card-custom {
+            background: #fff;
+            border-radius: 18px;
+            padding: 18px 22px;
+            border: 1px solid #eef2f6;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
+        .savings-card-custom:hover { transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06); }
+        .savings-card-custom .s-icon { width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: #fef3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #d97706;
+            flex-shrink: 0; }
+        .savings-card-custom .s-info { flex: 1; }
+        .savings-card-custom .s-info h6 { font-weight: 600;
+            color: #0b1120;
+            margin: 0; }
+        .savings-card-custom .s-info .s-amount { font-size: 14px;
+            color: #6b7280; }
+        .savings-card-custom .s-info .s-date { font-size: 12px;
+            color: #9ca3af; }
+
+        body.dark-mode .savings-header h2 { color: #fff; }
+        body.dark-mode .savings-summary .s-item { background: #1a2a4a;
+            border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-mode .savings-summary .s-item .value { color: #fff; }
+        body.dark-mode .savings-card-custom { background: #1a2a4a;
+            border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-mode .savings-card-custom .s-info h6 { color: #fff; }
+        body.dark-mode .savings-card-custom .s-info .s-amount { color: #94a3b8; }
+
+        .empty-savings { text-align: center;
+            padding: 60px 20px;
+            color: #6b7280; }
+        .empty-savings i { font-size: 56px;
+            color: #d1d9e6;
+            margin-bottom: 16px; }
+        .empty-savings h5 { color: #1a1a2e;
+            font-weight: 600; }
+        body.dark-mode .empty-savings i { color: #334155; }
+        body.dark-mode .empty-savings h5 { color: #e5e9f0; }
+
+        @media (max-width: 768px) { .savings-summary { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .savings-summary { grid-template-columns: 1fr; } }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="top-navbar fixed-top">
+        <div class="nav-container">
+            <a class="brand" href="dashboard.html">
+                <span class="brand-logo-wrapper">
+                    <img src="../assets/icons/logo.png" alt="FinancePro" class="brand-logo-img">
+                </span>
+            </a>
+            <button class="hamburger-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="bi bi-grid-fill"></i><span>Dashboard</span></a></li>
+                <li><a href="transactions.html"><i class="bi bi-arrow-left-right"></i><span>Transactions</span></a></li>
+                <li><a href="budget.html"><i class="bi bi-pie-chart-fill"></i><span>Budget</span></a></li>
+                <li><a href="goals.html"><i class="bi bi-trophy-fill"></i><span>Goals</span></a></li>
+                <li class="active"><a href="savings.html"><i class="bi bi-piggy-bank-fill"></i><span>Savings</span></a></li>
+                <li><a href="notes.html"><i class="bi bi-sticky-fill"></i><span>Notes</span></a></li>
+                <li><a href="settings.html"><i class="bi bi-gear-fill"></i><span>Settings</span></a></li>
+                <li><a href="profile.html"><i class="bi bi-person-fill"></i><span>Profile</span></a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="bi bi-moon-fill"></i></button>
+                <button class="notif-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></button>
+                <div class="profile-dropdown">
+                    <img src="../assets/images/image.jpeg" alt="Profile" class="profile-img">
+                    <div class="profile-info">
+                        <span class="profile-name" id="userName">Nayeem</span>
+                        <span class="profile-role">Premium</span>
+                    </div>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <a href="../index.html" class="logout-btn" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="savings-header">
+            <div>
+                <h2>🐷 Savings</h2>
+                <p>Track your savings and watch your money grow</p>
+            </div>
+            <button class="btn btn-primary rounded-pill px-4" onclick="addSavings()">
+                <i class="bi bi-plus-circle me-1"></i> Add Savings
+            </button>
+        </div>
+
+        <!-- Summary -->
+        <div class="savings-summary">
+            <div class="s-item">
+                <div class="value gold" id="totalSavings">৳0</div>
+                <div class="label">Total Savings</div>
+            </div>
+            <div class="s-item">
+                <div class="value green" id="monthlySavings">৳0</div>
+                <div class="label">This Month</div>
+            </div>
+            <div class="s-item">
+                <div class="value blue" id="savingsCount">0</div>
+                <div class="label">Total Entries</div>
+            </div>
+        </div>
+
+        <!-- List -->
+        <div id="savingsList"></div>
+        <div id="emptySavings" class="empty-savings" style="display:none;">
+            <i class="bi bi-piggy-bank"></i>
+            <h5>No savings records</h5>
+            <p>Start saving today and watch your money grow.</p>
+            <button class="btn btn-primary rounded-pill px-4 mt-2" onclick="addSavings()">
+                <i class="bi bi-plus-circle me-1"></i> Add Savings
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Add Savings Modal -->
+    <div class="modal fade" id="addSavingsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-piggy-bank me-2"></i>Add Savings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Description</label>
+                        <input type="text" id="savingsDesc" class="form-control" placeholder="e.g., Monthly savings">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Amount (৳)</label>
+                        <input type="number" id="savingsAmount" class="form-control" placeholder="Enter amount">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Date</label>
+                        <input type="date" id="savingsDate" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveSavings()"><i class="bi bi-check-circle me-1"></i> Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAB -->
+    <button class="fab-btn" id="fabBtn"><i class="bi bi-plus-lg"></i></button>
+    <div class="fab-menu" id="fabMenu">
+        <button class="fab-item" onclick="addSavings()"><i class="bi bi-piggy-bank-fill text-success"></i><span>Add Savings</span></button>
+        <button class="fab-item" onclick="window.location.href='goals.html'"><i class="bi bi-trophy-fill text-warning"></i><span>Goals</span></button>
+        <button class="fab-item" onclick="window.location.href='transactions.html'"><i class="bi bi-arrow-left-right text-primary"></i><span>Transactions</span></button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fabBtn = document.getElementById('fabBtn');
+            const fabMenu = document.getElementById('fabMenu');
+            fabBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                fabMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!fabBtn.contains(e.target) && !fabMenu.contains(e.target)) {
+                    fabMenu.classList.remove('open');
+                }
+            });
+            renderSavings();
+        });
+
+        function addSavings() {
+            const modal = new bootstrap.Modal(document.getElementById('addSavingsModal'));
+            document.getElementById('savingsDate').value = new Date().toISOString().split('T')[0];
+            modal.show();
+        }
+
+        function saveSavings() {
+            const description = document.getElementById('savingsDesc').value.trim() || 'Savings';
+            const amount = parseFloat(document.getElementById('savingsAmount').value);
+            const date = document.getElementById('savingsDate').value;
+
+            if (!amount || amount <= 0) { alert('Please enter a valid amount'); return; }
+
+            const savings = JSON.parse(localStorage.getItem('savings') || '[]');
+            savings.push({ id: Date.now(), description, amount, date, createdAt: new Date().toISOString() });
+            localStorage.setItem('savings', JSON.stringify(savings));
+            bootstrap.Modal.getInstance(document.getElementById('addSavingsModal')).hide();
+            renderSavings();
+        }
+
+        function deleteSavings(id) {
+            if (!confirm('Delete this savings record?')) return;
+            let savings = JSON.parse(localStorage.getItem('savings') || '[]');
+            savings = savings.filter(s => s.id !== id);
+            localStorage.setItem('savings', JSON.stringify(savings));
+            renderSavings();
+        }
+
+        function renderSavings() {
+            const savings = JSON.parse(localStorage.getItem('savings') || '[]');
+            const container = document.getElementById('savingsList');
+            const empty = document.getElementById('emptySavings');
+
+            if (savings.length === 0) {
+                container.innerHTML = '';
+                empty.style.display = 'block';
+                document.getElementById('totalSavings').textContent = '৳0';
+                document.getElementById('monthlySavings').textContent = '৳0';
+                document.getElementById('savingsCount').textContent = '0';
+                return;
+            }
+            empty.style.display = 'none';
+
+            let total = 0,
+                monthlyTotal = 0;
+            const now = new Date();
+            const currentMonth = now.getMonth();
+            const currentYear = now.getFullYear();
+
+            savings.forEach(s => {
+                total += s.amount;
+                const d = new Date(s.date);
+                if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) monthlyTotal += s.amount;
+            });
+
+            document.getElementById('totalSavings').textContent = '৳' + total.toFixed(2);
+            document.getElementById('monthlySavings').textContent = '৳' + monthlyTotal.toFixed(2);
+            document.getElementById('savingsCount').textContent = savings.length;
+
+            container.innerHTML = savings.slice().reverse().map(s => `
+                    <div class="savings-card-custom">
+                        <div class="s-icon"><i class="bi bi-piggy-bank"></i></div>
+                        <div class="s-info">
+                            <h6>${s.description}</h6>
+                            <span class="s-amount">৳${s.amount.toFixed(2)}</span>
+                            <span class="s-date"> • ${new Date(s.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteSavings(${s.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+        }
+    </script>
+
+</body>
+
+</html>
