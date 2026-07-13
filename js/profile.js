@@ -1,61 +1,33 @@
-const profileName =
-    document.getElementById("profileName");
+// ==========================================
+// ===== PROFILE.JS =====
+// ==========================================
 
-const saveProfile =
-    document.getElementById("saveProfile");
+document.addEventListener('DOMContentLoaded', function() {
+    // Load user data
+    const userName = localStorage.getItem('userName') || 'Nayeem';
+    const userEmail = localStorage.getItem('userEmail') || 'demo@financepro.com';
 
-if (saveProfile) {
+    document.getElementById('profileName')?.textContent = userName;
+    document.getElementById('profileEmail')?.textContent = userEmail;
 
-    saveProfile.addEventListener("click", () => {
+    // Show stats
+    const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+    const summary = getTransactionSummary ? getTransactionSummary() : { totalIncome: 0, totalExpense: 0, count: 0 };
 
-        const name = profileName.value;
+    document.getElementById('totalTransactions')?.textContent = summary.count || 0;
+    document.getElementById('totalIncomeProfile')?.textContent = formatCurrency ? formatCurrency(summary.totalIncome || 0) : '৳0';
+    document.getElementById('totalExpenseProfile')?.textContent = formatCurrency ? formatCurrency(summary.totalExpense || 0) : '৳0';
 
-        localStorage.setItem(
-            "profileName",
-            name
-        );
-
-        alert("Profile Updated");
-
+    // Edit profile
+    document.getElementById('editProfileBtn')?.addEventListener('click', function() {
+        const newName = prompt('Enter your name:', userName);
+        if (newName && newName.trim()) {
+            localStorage.setItem('userName', newName.trim());
+            document.getElementById('profileName').textContent = newName.trim();
+            document.querySelectorAll('.profile-name, #userName').forEach(el => {
+                if (el) el.textContent = newName.trim();
+            });
+            alert('Profile updated successfully!');
+        }
     });
-
-}
-
-if (profileName) {
-
-    profileName.value =
-        localStorage.getItem("profileName")
-        || "Masud Rana Nayeem";
-
-}
-
-
-const balance =
-    Number(
-        localStorage.getItem("balance")
-    ) || 0;
-
-const income =
-    Number(
-        localStorage.getItem("income")
-    ) || 0;
-
-const expense =
-    Number(
-        localStorage.getItem("expense")
-    ) || 0;
-
-document.getElementById(
-    "profileBalance"
-).innerText =
-    "৳" + balance;
-
-document.getElementById(
-    "profileIncome"
-).innerText =
-    "৳" + income;
-
-document.getElementById(
-    "profileExpense"
-).innerText =
-    "৳" + expense;
+});

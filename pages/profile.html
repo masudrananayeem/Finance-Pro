@@ -1,221 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>Finance Pro - Profile</title>
+    
+    <!-- FAVICON - Full Package -->
+    <!-- ========================================== -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+    <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/darkmode.css">
-
     <style>
-        body {
-            background: #f4f7fc;
-        }
-
-        .profile-card {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #4361ee;
-        }
-
-        .info-box {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 20px;
-            border-radius: 15px;
-            color: white;
-        }
-
-        .income {
-            background: linear-gradient(135deg, #00b894, #55efc4);
-        }
-
-        .expense {
-            background: linear-gradient(135deg, #ff6b6b, #e63946);
-        }
-
-        .balance {
-            background: linear-gradient(135deg, #4361ee, #4895ef);
-        }
+        .profile-avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #2563eb; margin: 0 auto 16px; display: block; }
+        .profile-card { background: #fff; border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #eef2f6; max-width: 600px; margin: 0 auto; }
+        body.dark-mode .profile-card { background: #1a2a4a; border-color: rgba(255,255,255,0.06); }
+        body.dark-mode .profile-card h3, body.dark-mode .profile-card label { color: #fff; }
+        body.dark-mode .profile-card .text-muted { color: #94a3b8 !important; }
+        .stat-box-profile { background: #f0f4f8; border-radius: 12px; padding: 16px; text-align: center; }
+        body.dark-mode .stat-box-profile { background: rgba(255,255,255,0.04); }
+        .stat-box-profile .number { font-size: 24px; font-weight: 800; color: #0b1120; }
+        body.dark-mode .stat-box-profile .number { color: #fff; }
+        .stat-box-profile .label { font-size: 12px; color: #6b7280; font-weight: 500; }
+        body.dark-mode .stat-box-profile .label { color: #94a3b8; }
     </style>
-
 </head>
-
 <body>
-    <div id="navbar-container"></div>
 
-    <div class="container py-5">
-
-        <div class="profile-card">
-
-            <div class="text-center">
-
-                <img src="../assets/images/image.jpeg" class="profile-img">
-
-                <h2 class="mt-3">
-                    Masud Rana Nayeem
-                </h2>
-
-                <p class="text-muted">
-                    Frontend Web Developer
-                </p>
-
-                <button class="btn btn-primary">
-                    <i class="bi bi-camera-fill"></i>
-                    Change Photo
-                </button>
-
+<nav class="top-navbar fixed-top">
+    <div class="nav-container">
+        <a class="brand" href="dashboard.html"><span class="brand-logo-wrapper"><img src="../assets/icons/logo.png" alt="FinancePro" class="brand-logo-img"></span></a>
+        <button class="hamburger-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="bi bi-grid-fill"></i><span>Dashboard</span></a></li>
+            <li><a href="transactions.html"><i class="bi bi-arrow-left-right"></i><span>Transactions</span></a></li>
+            <li><a href="budget.html"><i class="bi bi-pie-chart-fill"></i><span>Budget</span></a></li>
+            <li><a href="goals.html"><i class="bi bi-trophy-fill"></i><span>Goals</span></a></li>
+            <li><a href="savings.html"><i class="bi bi-piggy-bank-fill"></i><span>Savings</span></a></li>
+            <li><a href="notes.html"><i class="bi bi-sticky-fill"></i><span>Notes</span></a></li>
+            <li><a href="settings.html"><i class="bi bi-gear-fill"></i><span>Settings</span></a></li>
+            <li class="active"><a href="profile.html"><i class="bi bi-person-fill"></i><span>Profile</span></a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle"><i class="bi bi-moon-fill"></i></button>
+            <button class="notif-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></button>
+            <div class="profile-dropdown">
+                <img src="../assets/images/image.jpeg" alt="Profile" class="profile-img">
+                <div class="profile-info">
+                    <span class="profile-name" id="userName">Nayeem</span>
+                    <span class="profile-role">Premium</span>
+                </div>
+                <i class="bi bi-chevron-down"></i>
             </div>
+            <a href="../index.html" class="logout-btn" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
+        </div>
+    </div>
+</nav>
 
-            <hr class="my-4">
+<main class="main-content">
+    <div class="profile-card">
+        <img src="../assets/images/image.jpeg" alt="Profile" class="profile-avatar">
+        <h3 class="text-center" id="profileName">Nayeem</h3>
+        <p class="text-center text-muted" id="profileEmail">demo@financepro.com</p>
+        <div class="text-center mb-4"><span class="badge bg-primary rounded-pill px-3 py-2">Premium Member</span></div>
 
-            <div class="row">
-
-                <div class="col-md-4">
-
-                    <div class="stat-card balance">
-
-                        <h6>Balance</h6>
-
-                        <h3 id="profileBalance">
-                            ৳0
-                        </h3>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="stat-card income">
-
-                        <h6>Total Income</h6>
-
-                        <h3 id="profileIncome">
-                            ৳0
-                        </h3>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="stat-card expense">
-
-                        <h6>Total Expense</h6>
-
-                        <h3 id="profileExpense">
-                            ৳0
-                        </h3>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="mt-4">
-
-                <div class="info-box">
-
-                    <strong>
-                        <i class="bi bi-envelope-fill"></i>
-                        Email
-                    </strong>
-
-                    <p class="mb-0">
-                        nayeem@gmail.com
-                    </p>
-
-                </div>
-
-                <div class="info-box">
-
-                    <strong>
-                        <i class="bi bi-telephone-fill"></i>
-                        Phone
-                    </strong>
-
-                    <p class="mb-0">
-                        +880 1XXXXXXXXX
-                    </p>
-
-                </div>
-
-                <div class="info-box">
-
-                    <strong>
-                        <i class="bi bi-geo-alt-fill"></i>
-                        Address
-                    </strong>
-
-                    <p class="mb-0">
-                        Kaliganj, Bangladesh
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="text-center mt-4">
-
-                <button class="btn btn-success me-2">
-                    Edit Profile
-                </button>
-
-                <button id="logoutBtn" class="btn btn-outline-danger">
-
-                    Logout
-
-                </button>
-
-            </div>
-
+        <div class="row g-3 mb-4">
+            <div class="col-4"><div class="stat-box-profile"><div class="number" id="totalTransactions">0</div><div class="label">Transactions</div></div></div>
+            <div class="col-4"><div class="stat-box-profile"><div class="number" id="totalIncomeProfile">৳0</div><div class="label">Total Income</div></div></div>
+            <div class="col-4"><div class="stat-box-profile"><div class="number" id="totalExpenseProfile">৳0</div><div class="label">Total Expenses</div></div></div>
         </div>
 
-
-
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" id="editProfileBtn"><i class="bi bi-pencil me-2"></i>Edit Profile</button>
+            <button class="btn btn-outline-danger" onclick="if(confirm('Delete all data?')){localStorage.clear();alert('Data cleared!');window.location.href='dashboard.html';}"><i class="bi bi-trash me-2"></i>Clear All Data</button>
+        </div>
+        <p class="text-center text-muted mt-3 small">Member since January 2024</p>
     </div>
+</main>
 
-
-
-    <script src="../js/navbar.js"></script>
-    <script src="../js/profile.js"></script>
-
-    <script> document.getElementById("logoutBtn").addEventListener("click", () => { localStorage.clear(); window.location.href = "../index.html"; }); </script>
-    <script>
-
-        if (localStorage.getItem("theme") === "dark") {
-
-            document.body.classList.add("dark-mode");
-
-        }
-
-
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/profile.js"></script>
 </body>
-
 </html>

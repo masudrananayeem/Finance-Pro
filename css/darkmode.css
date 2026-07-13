@@ -1,40 +1,111 @@
-.dark-mode {
+/* ===== DARK MODE - COMPLETE ===== */
 
+body.dark-mode {
     background: #0f172a;
-
-    color: white;
+    color: #e5e9f0;
 }
 
-.dark-mode .card {
-
-    background: #1e293b;
-
-    color: white;
+/* Navbar */
+body.dark-mode .top-navbar {
+    background: linear-gradient(135deg, #0b1120 0%, #1a2a4a 50%, #0b1120 100%);
 }
+body.dark-mode .nav-links li a { color: rgba(255,255,255,0.6); }
+body.dark-mode .nav-links li a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+body.dark-mode .nav-links li.active a { color: #fff; background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(245,158,11,0.08)); }
+body.dark-mode .nav-links li.active a i { color: #fbbf24; }
+body.dark-mode .nav-links { background: #0b1120; }
 
-.dark-mode .table {
+/* Theme Toggle */
+body.dark-mode .theme-toggle { background: rgba(255,255,255,0.1); color: #fbbf24; }
+body.dark-mode .theme-toggle:hover { background: rgba(255,255,255,0.18); }
+body.dark-mode .notif-btn { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); }
+body.dark-mode .notif-btn:hover { background: rgba(255,255,255,0.12); }
+body.dark-mode .notif-dot { border-color: #1a2a4a; }
 
-    color: white;
+/* Profile */
+body.dark-mode .profile-dropdown { background: rgba(255,255,255,0.06); }
+body.dark-mode .profile-dropdown:hover { background: rgba(255,255,255,0.10); }
+body.dark-mode .profile-name { color: #fff; }
+body.dark-mode .profile-role { color: rgba(255,255,255,0.4); }
+body.dark-mode .profile-dropdown i { color: rgba(255,255,255,0.3); }
+
+/* Logout */
+body.dark-mode .logout-btn { background: rgba(239,68,68,0.1); color: rgba(239,68,68,0.6); }
+body.dark-mode .logout-btn:hover { background: rgba(239,68,68,0.2); color: #ef4444; }
+
+/* Hamburger */
+body.dark-mode .hamburger-toggle { color: rgba(255,255,255,0.7); }
+body.dark-mode .hamburger-toggle:hover { color: #fff; }
+
+/* Greeting */
+body.dark-mode .greeting-section { background: #1a2a4a; border-color: rgba(255,255,255,0.06); }
+body.dark-mode .greeting-title { color: #fff; }
+body.dark-mode .greeting-time, body.dark-mode .greeting-sub, body.dark-mode .greeting-date { color: #94a3b8; }
+body.dark-mode .greeting-date { background: rgba(255,255,255,0.06); }
+
+/* Stats */
+body.dark-mode .stat-card { background: #1a2a4a; border-color: rgba(255,255,255,0.06); }
+body.dark-mode .stat-value { color: #fff; }
+body.dark-mode .stat-label { color: #94a3b8; }
+body.dark-mode .stat-change.positive { color: #34d399; }
+body.dark-mode .stat-change.negative { color: #f87171; }
+
+/* Cards */
+body.dark-mode .chart-card, body.dark-mode .quick-actions-card,
+body.dark-mode .goal-card, body.dark-mode .transaction-card {
+    background: #1a2a4a; border-color: rgba(255,255,255,0.06);
 }
+body.dark-mode .card-header-custom h5 { color: #fff; }
+body.dark-mode .card-header-custom a { color: #60a5fa; }
+body.dark-mode .chart-card .badge { background: rgba(255,255,255,0.08) !important; color: #94a3b8 !important; }
+body.dark-mode .btn-icon { color: #64748b; }
+body.dark-mode .btn-icon:hover { background: rgba(255,255,255,0.06); color: #e5e9f0; }
 
-.dark-mode .form-control,
-.dark-mode .form-select {
+/* Quick Actions */
+body.dark-mode .action-btn { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.06); color: #e5e9f0; }
+body.dark-mode .action-btn:hover { background: rgba(255,255,255,0.08); }
+body.dark-mode .summary-item { color: #94a3b8; }
+body.dark-mode .summary-item.total { border-color: rgba(255,255,255,0.06); color: #fff; }
+body.dark-mode .summary-item.total strong { color: #60a5fa; }
+body.dark-mode hr { border-color: rgba(255,255,255,0.06); }
 
-    background: #334155;
+/* Goals */
+body.dark-mode .goal-item { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .goal-details h6 { color: #fff; }
+body.dark-mode .goal-percent { color: #34d399; }
+body.dark-mode .progress-track { background: rgba(255,255,255,0.08); }
+body.dark-mode .goal-icon { background: rgba(37,99,235,0.15); }
+body.dark-mode .add-goal-btn { border-color: rgba(255,255,255,0.1); color: #94a3b8; }
+body.dark-mode .add-goal-btn:hover { border-color: #3b82f6; color: #60a5fa; background: rgba(59,130,246,0.05); }
 
-    color: white;
+/* Transactions */
+body.dark-mode .transaction-card .table thead th { color: #64748b; border-color: rgba(255,255,255,0.06); }
+body.dark-mode .transaction-card .table tbody td { color: #e5e9f0; border-color: rgba(255,255,255,0.04); }
+body.dark-mode .transaction-card .table tbody tr:hover { background: rgba(255,255,255,0.04); }
+body.dark-mode .transaction-name { color: #e5e9f0; }
+body.dark-mode .transaction-card .table .text-muted { color: #64748b !important; }
 
-    border: none;
+/* FAB */
+body.dark-mode .fab-btn { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+body.dark-mode .fab-item { background: #1a2a4a; color: #e5e9f0; border: 1px solid rgba(255,255,255,0.06); }
+body.dark-mode .fab-item:hover { background: #243b5e; }
+
+/* Modal */
+body.dark-mode .modal-content { background: #1a2a4a; border-color: rgba(255,255,255,0.06); }
+body.dark-mode .modal-header { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .modal-title { color: #fff; }
+body.dark-mode .modal-body label { color: #94a3b8; }
+body.dark-mode .modal-body .form-control, body.dark-mode .modal-body .form-select {
+    background: #0f172a; border-color: rgba(255,255,255,0.06); color: #e5e9f0;
 }
-
-.dark-mode .navbar {
-
-    background: #020617 !important;
+body.dark-mode .modal-body .form-control:focus, body.dark-mode .modal-body .form-select:focus {
+    border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
 }
+body.dark-mode .modal-footer { border-color: rgba(255,255,255,0.06); }
+body.dark-mode .btn-close { filter: invert(1); }
 
-.dark-mode .info-box {
-
-    background: #334155;
-
-    color: white;
-}
+/* Scrollbar */
+body.dark-mode::-webkit-scrollbar { width: 8px; }
+body.dark-mode::-webkit-scrollbar-track { background: #0f172a; }
+body.dark-mode::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+body.dark-mode::-webkit-scrollbar-thumb:hover { background: #475569; }

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Pro - Goals</title>
+
+     <!-- FAVICON - Full Package -->
+    <!-- ========================================== -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/darkmode.css">
+
+    <style>
+        .goals-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .goals-header h2 { font-weight: 700;
+            color: #0b1120;
+            margin: 0; }
+        .goals-header p { color: #6b7280;
+            margin: 0;
+            font-size: 14px; }
+
+        .goal-card-custom {
+            background: #fff;
+            border-radius: 18px;
+            padding: 20px 24px;
+            border: 1px solid #eef2f6;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .goal-card-custom:hover { transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07); }
+        .goal-icon-large { width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2563eb;
+            flex-shrink: 0; }
+        .goal-info-custom { flex: 1; }
+        .goal-info-custom h5 { font-weight: 700;
+            color: #0b1120;
+            margin: 0; }
+        .goal-info-custom .target { font-size: 13px;
+            color: #6b7280; }
+        .goal-progress-custom { display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 4px; }
+        .goal-progress-custom .track { flex: 1;
+            height: 8px;
+            background: #e5e9f0;
+            border-radius: 10px;
+            overflow: hidden; }
+        .goal-progress-custom .fill { height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #059669, #10b981);
+            transition: width 0.6s ease; }
+        .goal-progress-custom .percent { font-weight: 700;
+            font-size: 14px;
+            color: #059669;
+            min-width: 44px; }
+        .goal-actions { display: flex;
+            gap: 8px;
+            flex-shrink: 0; }
+        .goal-actions button { width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 10px;
+            background: #f0f4f8;
+            color: #6b7280;
+            transition: all 0.2s ease;
+            cursor: pointer; }
+        .goal-actions button:hover { background: #e5e9f0;
+            color: #1a1a2e; }
+        .goal-actions button.delete:hover { background: #fecaca;
+            color: #dc2626; }
+
+        body.dark-mode .goals-header h2 { color: #fff; }
+        body.dark-mode .goal-card-custom { background: #1a2a4a;
+            border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-mode .goal-info-custom h5 { color: #fff; }
+        body.dark-mode .goal-info-custom .target { color: #94a3b8; }
+        body.dark-mode .goal-progress-custom .track { background: rgba(255, 255, 255, 0.08); }
+        body.dark-mode .goal-actions button { background: rgba(255, 255, 255, 0.06);
+            color: #94a3b8; }
+        body.dark-mode .goal-actions button:hover { background: rgba(255, 255, 255, 0.12);
+            color: #fff; }
+
+        .empty-goals { text-align: center;
+            padding: 60px 20px;
+            color: #6b7280; }
+        .empty-goals i { font-size: 56px;
+            color: #d1d9e6;
+            margin-bottom: 16px; }
+        .empty-goals h5 { color: #1a1a2e;
+            font-weight: 600; }
+        body.dark-mode .empty-goals i { color: #334155; }
+        body.dark-mode .empty-goals h5 { color: #e5e9f0; }
+
+        @media (max-width: 768px) { .goal-card-custom { flex-wrap: wrap; } .goal-actions { width: 100%;
+                justify-content: flex-end; } }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="top-navbar fixed-top">
+        <div class="nav-container">
+            <a class="brand" href="dashboard.html">
+                <span class="brand-logo-wrapper">
+                    <img src="../assets/icons/logo.png" alt="FinancePro" class="brand-logo-img">
+                </span>
+            </a>
+            <button class="hamburger-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="bi bi-grid-fill"></i><span>Dashboard</span></a></li>
+                <li><a href="transactions.html"><i class="bi bi-arrow-left-right"></i><span>Transactions</span></a></li>
+                <li><a href="budget.html"><i class="bi bi-pie-chart-fill"></i><span>Budget</span></a></li>
+                <li class="active"><a href="goals.html"><i class="bi bi-trophy-fill"></i><span>Goals</span></a></li>
+                <li><a href="savings.html"><i class="bi bi-piggy-bank-fill"></i><span>Savings</span></a></li>
+                <li><a href="notes.html"><i class="bi bi-sticky-fill"></i><span>Notes</span></a></li>
+                <li><a href="settings.html"><i class="bi bi-gear-fill"></i><span>Settings</span></a></li>
+                <li><a href="profile.html"><i class="bi bi-person-fill"></i><span>Profile</span></a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="bi bi-moon-fill"></i></button>
+                <button class="notif-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></button>
+                <div class="profile-dropdown">
+                    <img src="../assets/images/image.jpeg" alt="Profile" class="profile-img">
+                    <div class="profile-info">
+                        <span class="profile-name" id="userName">Masud Rana Nayeem</span>
+                        <span class="profile-role">Premium</span>
+                    </div>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <a href="../index.html" class="logout-btn" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="goals-header">
+            <div>
+                <h2>🏆 Goals</h2>
+                <p>Track your financial goals and milestones</p>
+            </div>
+            <button class="btn btn-primary rounded-pill px-4" onclick="addGoal()">
+                <i class="bi bi-plus-circle me-1"></i> Add Goal
+            </button>
+        </div>
+
+        <div id="goalsList"></div>
+        <div id="emptyGoals" class="empty-goals" style="display:none;">
+            <i class="bi bi-trophy"></i>
+            <h5>No goals set yet</h5>
+            <p>Set your first financial goal and start tracking your progress.</p>
+            <button class="btn btn-primary rounded-pill px-4 mt-2" onclick="addGoal()">
+                <i class="bi bi-plus-circle me-1"></i> Create Goal
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Add Goal Modal -->
+    <div class="modal fade" id="addGoalModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-trophy me-2"></i>Add Goal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Goal Name</label>
+                        <input type="text" id="goalName" class="form-control" placeholder="e.g., New Laptop">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Target Amount (৳)</label>
+                        <input type="number" id="goalTarget" class="form-control" placeholder="Enter target amount">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Current Saved (৳)</label>
+                        <input type="number" id="goalCurrent" class="form-control" placeholder="Enter current savings" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Icon</label>
+                        <select id="goalIcon" class="form-select">
+                            <option value="bi-ssd">💾 SSD</option>
+                            <option value="bi-piggy-bank">🐷 Piggy Bank</option>
+                            <option value="bi-house">🏠 House</option>
+                            <option value="bi-car">🚗 Car</option>
+                            <option value="bi-laptop">💻 Laptop</option>
+                            <option value="bi-airplane">✈️ Travel</option>
+                            <option value="bi-gift">🎁 Gift</option>
+                            <option value="bi-heart">❤️ Health</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveGoal()"><i class="bi bi-check-circle me-1"></i> Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAB -->
+    <button class="fab-btn" id="fabBtn"><i class="bi bi-plus-lg"></i></button>
+    <div class="fab-menu" id="fabMenu">
+        <button class="fab-item" onclick="addGoal()"><i class="bi bi-trophy-fill text-warning"></i><span>New Goal</span></button>
+        <button class="fab-item" onclick="window.location.href='savings.html'"><i class="bi bi-piggy-bank-fill text-success"></i><span>Savings</span></button>
+        <button class="fab-item" onclick="window.location.href='transactions.html'"><i class="bi bi-arrow-left-right text-primary"></i><span>Transactions</span></button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fabBtn = document.getElementById('fabBtn');
+            const fabMenu = document.getElementById('fabMenu');
+            fabBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                fabMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!fabBtn.contains(e.target) && !fabMenu.contains(e.target)) {
+                    fabMenu.classList.remove('open');
+                }
+            });
+            renderGoals();
+        });
+
+        function addGoal() {
+            const modal = new bootstrap.Modal(document.getElementById('addGoalModal'));
+            modal.show();
+        }
+
+        function saveGoal() {
+            const name = document.getElementById('goalName').value.trim();
+            const target = parseFloat(document.getElementById('goalTarget').value);
+            const current = parseFloat(document.getElementById('goalCurrent').value) || 0;
+            const icon = document.getElementById('goalIcon').value;
+
+            if (!name) { alert('Please enter a goal name'); return; }
+            if (!target || target <= 0) { alert('Please enter a valid target amount'); return; }
+
+            const goals = JSON.parse(localStorage.getItem('goals') || '[]');
+            goals.push({ id: Date.now(), name, target, current, icon, createdAt: new Date().toISOString() });
+            localStorage.setItem('goals', JSON.stringify(goals));
+            bootstrap.Modal.getInstance(document.getElementById('addGoalModal')).hide();
+            renderGoals();
+        }
+
+        function deleteGoal(id) {
+            if (!confirm('Delete this goal?')) return;
+            let goals = JSON.parse(localStorage.getItem('goals') || '[]');
+            goals = goals.filter(g => g.id !== id);
+            localStorage.setItem('goals', JSON.stringify(goals));
+            renderGoals();
+        }
+
+        function addToGoal(id) {
+            const amount = prompt('Enter amount to add to this goal:');
+            if (amount === null) return;
+            const num = parseFloat(amount);
+            if (!num || num <= 0) { alert('Please enter a valid amount'); return; }
+
+            const goals = JSON.parse(localStorage.getItem('goals') || '[]');
+            const goal = goals.find(g => g.id === id);
+            if (goal) {
+                goal.current = Math.min(goal.current + num, goal.target);
+                localStorage.setItem('goals', JSON.stringify(goals));
+                renderGoals();
+            }
+        }
+
+        function renderGoals() {
+            const goals = JSON.parse(localStorage.getItem('goals') || '[]');
+            const container = document.getElementById('goalsList');
+            const empty = document.getElementById('emptyGoals');
+
+            if (goals.length === 0) { container.innerHTML = '';
+                empty.style.display = 'block'; return; }
+            empty.style.display = 'none';
+
+            const iconMap = { 'bi-ssd': 'bi-ssd', 'bi-piggy-bank': 'bi-piggy-bank', 'bi-house': 'bi-house', 'bi-car': 'bi-car', 'bi-laptop': 'bi-laptop', 'bi-airplane': 'bi-airplane', 'bi-gift': 'bi-gift', 'bi-heart': 'bi-heart' };
+
+            container.innerHTML = goals.map(g => {
+                const percent = Math.min((g.current / g.target) * 100, 100);
+                return `
+                        <div class="goal-card-custom">
+                            <div class="goal-icon-large"><i class="bi ${iconMap[g.icon] || 'bi-trophy'}"></i></div>
+                            <div class="goal-info-custom">
+                                <h5>${g.name}</h5>
+                                <span class="target">Target: ৳${g.target.toFixed(2)}</span>
+                                <div class="goal-progress-custom">
+                                    <div class="track"><div class="fill" style="width:${percent}%;"></div></div>
+                                    <span class="percent">${percent.toFixed(0)}%</span>
+                                </div>
+                                <span class="target">Saved: ৳${g.current.toFixed(2)}</span>
+                            </div>
+                            <div class="goal-actions">
+                                <button onclick="addToGoal(${g.id})" title="Add savings"><i class="bi bi-plus-circle"></i></button>
+                                <button class="delete" onclick="deleteGoal(${g.id})" title="Delete"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                    `;
+            }).join('');
+        }
+    </script>
+
+</body>
+
+</html>
