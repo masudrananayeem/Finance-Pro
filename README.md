@@ -234,7 +234,7 @@ MIT License © 2026 [Your Name]
 
 <div align="center">
 
-**Built with ❤️ using HTML, CSS & JavaScript**
+**Built with using HTML, CSS & JavaScript**
 
 *Finance Pro © 2026*
 
