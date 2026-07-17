@@ -2,7 +2,6 @@
 
 <img src="assets/icons/logo.png" alt="Finance Pro Logo" width="260">
 
-# 💰 Finance Pro
 
 ### Personal Finance Management Dashboard
 
