@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/icons/logo.png" alt="Finance Pro Logo" width="260">
+
 # 💰 Finance Pro
 
 ### Personal Finance Management Dashboard
@@ -14,6 +16,24 @@
 
 </div>
 
+
+---
+
+## 📚 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Core Features](#-core-features)
+- [Project Structure](#-project-structure)
+- [Tech Stack](#️-tech-stack)
+- [Installation & Setup](#-installation--setup)
+- [Pages](#-pages)
+- [Data Model (localStorage keys)](#-data-model-localstorage-keys)
+- [Responsive Design](#-responsive-design)
+- [Roadmap](#-roadmap)
+- [Known Issues](#-known-issues)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
 
 ---
 
